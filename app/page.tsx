@@ -4,6 +4,9 @@ import { SocialProof } from "@/components/social-proof"
 import { PricingSection } from "@/components/pricing-section"
 import { ProcessSection } from "@/components/process-section"
 import { PortfolioSection } from "@/components/portfolio-section"
+import { TrustCenter } from "@/components/trust-center"
+import { FounderStory } from "@/components/founder-story"
+import { FooterCTA } from "@/components/footer-cta"
 
 export default function Home() {
   return (
@@ -14,6 +17,9 @@ export default function Home() {
       <PricingSection />
       <ProcessSection />
       <PortfolioSection />
+      <TrustCenter />
+      <FounderStory />
+      <FooterCTA />
     </main>
   )
 }
