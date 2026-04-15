@@ -29,10 +29,10 @@ export function DashboardSidebar() {
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed left-0 top-0 bottom-0 w-64 bg-slate-50 border-r border-slate-200 flex flex-col z-40"
+      className="fixed left-0 top-0 bottom-0 w-64 bg-blue-900 border-r border-blue-800 flex flex-col z-40"
     >
       {/* Logo */}
-      <div className="p-6 border-b border-slate-200">
+      <div className="p-6 border-b border-blue-800">
         <Link href="/" className="flex items-center gap-3">
           <Image
             src="/images/inievo-icon.png"
@@ -41,7 +41,7 @@ export function DashboardSidebar() {
             height={40}
             className="rounded-lg"
           />
-          <span className="text-lg font-semibold text-slate-900">Inievo</span>
+          <span className="text-lg font-semibold text-white">Inievo</span>
         </Link>
       </div>
 
@@ -60,11 +60,11 @@ export function DashboardSidebar() {
                 href={link.href}
                 className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 group ${
                   link.active
-                    ? "bg-teal-50 text-teal-600 border-l-2 border-teal-600 -ml-[2px]"
-                    : "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
+                    ? "bg-orange-500/20 text-orange-400 border-l-2 border-orange-500 -ml-[2px]"
+                    : "text-blue-100 hover:text-white hover:bg-blue-800"
                 }`}
               >
-                <Icon className={`w-5 h-5 ${link.active ? "text-teal-600" : "text-slate-400 group-hover:text-slate-600"}`} />
+                <Icon className={`w-5 h-5 ${link.active ? "text-orange-400" : "text-blue-300 group-hover:text-blue-100"}`} />
                 {link.name}
               </Link>
             </motion.div>
@@ -73,14 +73,14 @@ export function DashboardSidebar() {
       </nav>
 
       {/* Bottom section */}
-      <div className="p-4 border-t border-slate-200">
+      <div className="p-4 border-t border-blue-800">
         <div className="flex items-center gap-3 px-4 py-3">
-          <div className="w-8 h-8 rounded-full bg-teal-600 flex items-center justify-center text-white text-sm font-medium">
+          <div className="w-8 h-8 rounded-full bg-orange-500 flex items-center justify-center text-white text-sm font-medium">
             D
           </div>
           <div className="flex-1 min-w-0">
-            <p className="text-sm font-medium text-slate-900 truncate">Demo User</p>
-            <p className="text-xs text-slate-500 truncate">demo@inievo.com</p>
+            <p className="text-sm font-medium text-white truncate">Demo User</p>
+            <p className="text-xs text-blue-300 truncate">demo@inievo.com</p>
           </div>
         </div>
       </div>

@@ -16,16 +16,30 @@
   --card-foreground: #0F172A;
   --popover: #FFFFFF;
   --popover-foreground: #0F172A;
+  
+  /* Inievo Brand Colors */
+  --azure-dark: #1e3a8a;
+  --azure-main: #1e40af;
+  --azure-light: #3b82f6;
+  --signal-orange: #f97316;
+  --signal-orange-light: #fb923c;
+  
+  /* Primary - Teal (for dashboards) */
   --primary: #0D9488;
   --primary-light: #14B8A6;
   --primary-foreground: #FFFFFF;
+  
+  /* Secondary */
   --secondary: #F1F5F9;
   --secondary-foreground: #0F172A;
   --muted: #F1F5F9;
   --muted-foreground: #64748B;
+  
+  /* CTAs use Signal Orange */
   --accent: #F97316;
   --accent-light: #FB923C;
   --accent-foreground: #FFFFFF;
+  
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
   --border: #E2E8F0;
@@ -147,6 +161,12 @@
   }
   .glow-orange {
     box-shadow: 0 0 40px -10px rgba(249, 115, 22, 0.3);
+  }
+  .glow-orange-brand {
+    box-shadow: 0 0 30px -8px rgba(249, 115, 22, 0.4);
+  }
+  .glow-azure {
+    box-shadow: 0 0 30px -8px rgba(30, 58, 138, 0.3);
   }
   
   /* Glass Morphism */
