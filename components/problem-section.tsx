@@ -32,7 +32,7 @@ export function ProblemSection() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section className="py-16 md:py-24 bg-slate-50" ref={containerRef}>
+    <section className="py-24 md:py-32 bg-gray-50/50" ref={containerRef}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -44,10 +44,10 @@ export function ProblemSection() {
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-orange-600 uppercase bg-orange-50 rounded-full">
             Sound Familiar?
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight text-balance">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-5 tracking-tight">
             The Bangladeshi Business Web Problem
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto text-pretty">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             You&apos;ve seen it happen. Maybe it happened to you.
           </p>
         </motion.div>

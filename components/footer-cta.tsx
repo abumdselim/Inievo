@@ -2,50 +2,53 @@
 
 import { motion, useInView } from "framer-motion"
 import { useRef } from "react"
-import Image from "next/image"
 import Link from "next/link"
-import { ArrowRight, Linkedin, Facebook, Instagram, Mail, Phone } from "lucide-react"
+import { ArrowRight, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react"
 
 export function FooterCTA() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section className="relative bg-slate-900 overflow-hidden" ref={containerRef}>
-      {/* Grid Pattern Background */}
+    <section className="relative bg-gray-950 overflow-hidden" ref={containerRef}>
+      {/* Subtle gradient background */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[100px]" />
+      </div>
+      
+      {/* Grid pattern */}
       <div 
         className="absolute inset-0 opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
-                            linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)`,
+          backgroundImage: `
+            linear-gradient(to right, rgba(255,255,255,0.5) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(255,255,255,0.5) 1px, transparent 1px)
+          `,
           backgroundSize: '60px 60px'
         }}
       />
-      
-      {/* Gradient Orbs */}
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-teal-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-orange-500/10 rounded-full blur-3xl" />
 
       {/* CTA Section */}
-      <div className="relative py-20 md:py-28 px-6">
+      <div className="relative py-24 md:py-32 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.span
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block px-3 py-1 mb-6 text-xs font-semibold tracking-wider text-teal-400 uppercase bg-teal-500/10 rounded-full border border-teal-500/20"
+            className="inline-block px-4 py-1.5 mb-8 text-xs font-semibold tracking-wider text-teal-400 uppercase bg-teal-500/10 rounded-full border border-teal-500/20"
           >
-            Let&apos;s Work Together
+            Let&apos;s Build Together
           </motion.span>
           
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight"
           >
             Ready to Build Something{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 to-orange-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-300 to-orange-400">
               Remarkable?
             </span>
           </motion.h2>
@@ -54,7 +57,7 @@ export function FooterCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-slate-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed"
+            className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             We take on only 3 new projects per month to maintain the quality standard 
             our clients expect. If you&apos;re serious about your digital presence, let&apos;s talk.
@@ -68,108 +71,135 @@ export function FooterCTA() {
           >
             <Link
               href="#book"
-              className="group px-8 py-4 bg-white text-slate-900 font-medium rounded-full transition-all duration-300 hover:shadow-xl hover:shadow-white/10 hover:scale-105 flex items-center gap-2"
+              className="group px-8 py-4 bg-white text-gray-900 font-medium rounded-full transition-all duration-300 hover:shadow-2xl hover:shadow-white/10 hover:scale-[1.02] flex items-center gap-2 w-full sm:w-auto justify-center"
             >
               Book a Free Strategy Call
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
               href="#services"
-              className="px-8 py-4 border border-slate-700 hover:border-slate-600 text-slate-300 hover:text-white font-medium rounded-full transition-all duration-300"
+              className="px-8 py-4 border border-gray-700 hover:border-gray-500 text-gray-300 hover:text-white font-medium rounded-full transition-all duration-300 w-full sm:w-auto text-center"
             >
-              See Pricing
+              View Pricing
             </Link>
           </motion.div>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="relative border-t border-slate-800">
-        <div className="max-w-6xl mx-auto px-6 py-12">
-          <div className="grid md:grid-cols-4 gap-8 md:gap-12">
+      <footer className="relative border-t border-gray-800/50">
+        <div className="max-w-7xl mx-auto px-6 py-16">
+          <div className="grid md:grid-cols-12 gap-12">
             {/* Brand */}
-            <div className="md:col-span-2">
-              <div className="flex items-center gap-3 mb-4">
-                <Image
-                  src="/images/inievo-icon.png"
+            <div className="md:col-span-5">
+              <div className="flex items-center gap-3 mb-6">
+                <img
+                  src="https://res.cloudinary.com/dwdsys1u9/image/upload/f_auto,q_auto/IMG_6017_onhhf9"
                   alt="Inievo"
-                  width={32}
-                  height={32}
-                  className="w-8 h-8"
+                  className="h-10 w-auto object-contain brightness-0 invert"
                 />
-                <span className="text-white font-semibold text-lg">Inievo</span>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-6">
+              <p className="text-gray-400 text-sm leading-relaxed max-w-sm mb-8">
                 Premium digital systems for Bangladesh&apos;s ambitious brands. Architecturally sound websites, cohesive brand identities, and growth engines that scale.
               </p>
+              
               {/* Social Icons */}
-              <div className="flex items-center gap-3">
-                <Link
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300"
-                >
-                  <Linkedin className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300"
-                >
-                  <Facebook className="w-4 h-4" />
-                </Link>
-                <Link
-                  href="#"
-                  className="w-10 h-10 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-400 hover:text-white transition-all duration-300"
-                >
-                  <Instagram className="w-4 h-4" />
-                </Link>
+              <div className="flex items-center gap-2">
+                {[
+                  { icon: Linkedin, href: "#" },
+                  { icon: Facebook, href: "#" },
+                  { icon: Instagram, href: "#" },
+                ].map((social, i) => (
+                  <Link
+                    key={i}
+                    href={social.href}
+                    className="w-10 h-10 rounded-full bg-gray-800/50 hover:bg-gray-700 flex items-center justify-center text-gray-400 hover:text-white transition-all duration-300"
+                  >
+                    <social.icon className="w-4 h-4" />
+                  </Link>
+                ))}
               </div>
             </div>
 
             {/* Quick Links */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Quick Links</h4>
+            <div className="md:col-span-2">
+              <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Company</h4>
               <ul className="space-y-3 text-sm">
-                <li><Link href="#services" className="text-slate-400 hover:text-white transition-colors">Services</Link></li>
-                <li><Link href="#portfolio" className="text-slate-400 hover:text-white transition-colors">Portfolio</Link></li>
-                <li><Link href="#process" className="text-slate-400 hover:text-white transition-colors">Process</Link></li>
-                <li><Link href="/shop" className="text-slate-400 hover:text-white transition-colors">Digital Shop</Link></li>
-                <li><Link href="/blog" className="text-slate-400 hover:text-white transition-colors">Blog</Link></li>
+                {[
+                  { name: "Services", href: "#services" },
+                  { name: "Portfolio", href: "#portfolio" },
+                  { name: "Process", href: "#process" },
+                  { name: "Shop", href: "/shop" },
+                  { name: "Blog", href: "/blog" },
+                ].map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-gray-400 hover:text-white transition-colors duration-200">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Resources */}
+            <div className="md:col-span-2">
+              <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Resources</h4>
+              <ul className="space-y-3 text-sm">
+                {[
+                  { name: "Client Portal", href: "/client" },
+                  { name: "Demo Dashboard", href: "/demo" },
+                  { name: "Privacy Policy", href: "/privacy" },
+                  { name: "Terms", href: "/terms" },
+                ].map((link) => (
+                  <li key={link.name}>
+                    <Link href={link.href} className="text-gray-400 hover:text-white transition-colors duration-200">
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             {/* Contact */}
-            <div>
-              <h4 className="text-white font-semibold mb-4">Contact</h4>
-              <ul className="space-y-3 text-sm">
+            <div className="md:col-span-3">
+              <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Contact</h4>
+              <ul className="space-y-4 text-sm">
                 <li>
-                  <a href="mailto:hello@inievo.com" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
-                    <Mail className="w-4 h-4" />
+                  <a href="mailto:hello@inievo.com" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-gray-800/50 flex items-center justify-center">
+                      <Mail className="w-3.5 h-3.5" />
+                    </div>
                     hello@inievo.com
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+8801XXXXXXXXX" className="text-slate-400 hover:text-white transition-colors flex items-center gap-2">
-                    <Phone className="w-4 h-4" />
+                  <a href="tel:+8801XXXXXXXXX" className="text-gray-400 hover:text-white transition-colors duration-200 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-gray-800/50 flex items-center justify-center">
+                      <Phone className="w-3.5 h-3.5" />
+                    </div>
                     +880 1XXX-XXXXXX
                   </a>
+                </li>
+                <li>
+                  <span className="text-gray-400 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-gray-800/50 flex items-center justify-center">
+                      <MapPin className="w-3.5 h-3.5" />
+                    </div>
+                    Dhaka, Bangladesh
+                  </span>
                 </li>
               </ul>
             </div>
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-500 text-sm">
-              &copy; 2026 Inievo. All rights reserved.
+          <div className="mt-16 pt-8 border-t border-gray-800/50 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-gray-500 text-sm">
+              &copy; {new Date().getFullYear()} Inievo. All rights reserved.
             </p>
-            <div className="flex items-center gap-6 text-sm text-slate-500">
-              <Link href="/privacy" className="hover:text-slate-300 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-slate-300 transition-colors">
-                Terms of Service
-              </Link>
-            </div>
+            <p className="text-gray-600 text-xs">
+              Crafted with precision in Bangladesh
+            </p>
           </div>
         </div>
       </footer>

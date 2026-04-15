@@ -2,15 +2,14 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
-import Image from "next/image"
 import Link from "next/link"
-import { Menu, X } from "lucide-react"
+import { Menu, X, ArrowUpRight } from "lucide-react"
 
 const navLinks = [
   { name: "Services", href: "#services" },
-  { name: "Portfolio", href: "#portfolio" },
+  { name: "Work", href: "#portfolio" },
   { name: "Process", href: "#process" },
-  { name: "About", href: "#about" },
+  { name: "Shop", href: "/shop" },
 ]
 
 export function Navigation() {
@@ -19,179 +18,212 @@ export function Navigation() {
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    setHasScrolled(latest > 50)
+    setHasScrolled(latest > 20)
   })
 
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [mobileMenuOpen])
+
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        hasScrolled 
-          ? "bg-white/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(0,0,0,0.05)] border-b border-slate-100" 
-          : "bg-transparent"
-      }`}
-    >
-      <nav className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex h-16 md:h-20 items-center justify-between">
-          {/* Logo */}
-          <Link href="/" className="flex items-center group">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              transition={{ type: "spring", stiffness: 400, damping: 25 }}
-            >
-              <Image
-                src="/images/inievo-icon.png"
-                alt="Inievo"
-                width={40}
-                height={40}
-                className="rounded-lg"
-              />
-            </motion.div>
-          </Link>
-
-          {/* Center Links - Desktop */}
-          <div className="hidden md:flex items-center gap-1">
-            {navLinks.map((link, index) => (
+    <>
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+          hasScrolled 
+            ? "bg-[#FAFAF8]/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.03)]" 
+            : "bg-transparent"
+        }`}
+      >
+        <nav className="mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="flex h-16 md:h-20 items-center justify-between">
+            {/* Logo */}
+            <Link href="/" className="flex items-center gap-3 group">
               <motion.div
-                key={link.name}
-                initial={{ opacity: 0, y: -10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + index * 0.05, duration: 0.5 }}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="relative"
               >
-                <Link
-                  href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200 group"
-                >
-                  {link.name}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-teal-500 group-hover:w-4/5 transition-all duration-300 rounded-full" />
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Right Actions - Desktop */}
-          <div className="hidden md:flex items-center gap-3">
-            <motion.div
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-            >
-              <Link
-                href="/client"
-                className="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200"
-              >
-                Client Login
-              </Link>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 10 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5, duration: 0.5 }}
-            >
-              <Link
-                href="#book"
-                className="group relative inline-flex items-center justify-center overflow-hidden rounded-full bg-teal-600 px-6 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-teal-700 hover:shadow-lg hover:shadow-teal-500/25"
-              >
-                <span className="relative z-10">Book Strategy Call</span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-teal-600 to-teal-500"
-                  initial={{ x: "100%" }}
-                  whileHover={{ x: 0 }}
-                  transition={{ duration: 0.3 }}
+                <img
+                  src="https://res.cloudinary.com/dwdsys1u9/image/upload/f_auto,q_auto/IMG_6017_onhhf9"
+                  alt="Inievo"
+                  className="h-9 w-auto md:h-10 object-contain"
                 />
-              </Link>
-            </motion.div>
-          </div>
+              </motion.div>
+            </Link>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 text-slate-600 hover:text-slate-900 transition-colors rounded-lg hover:bg-slate-100"
-            aria-label="Toggle menu"
-            whileTap={{ scale: 0.95 }}
-          >
-            <AnimatePresence mode="wait">
-              {mobileMenuOpen ? (
-                <motion.div
-                  key="close"
-                  initial={{ rotate: -90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: 90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <X className="w-6 h-6" />
-                </motion.div>
-              ) : (
-                <motion.div
-                  key="menu"
-                  initial={{ rotate: 90, opacity: 0 }}
-                  animate={{ rotate: 0, opacity: 1 }}
-                  exit={{ rotate: -90, opacity: 0 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <Menu className="w-6 h-6" />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.button>
-        </div>
-      </nav>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="md:hidden overflow-hidden bg-white border-b border-slate-100"
-          >
-            <div className="px-6 py-6 space-y-1">
+            {/* Center Links - Desktop */}
+            <div className="hidden md:flex items-center gap-1">
               {navLinks.map((link, index) => (
                 <motion.div
                   key={link.name}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05, duration: 0.3 }}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.05, duration: 0.5 }}
                 >
                   <Link
                     href={link.href}
-                    onClick={() => setMobileMenuOpen(false)}
-                    className="block py-3 text-base font-medium text-slate-700 hover:text-teal-600 transition-colors duration-200"
+                    className="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-all duration-300 group"
                   >
-                    {link.name}
+                    <span className="relative z-10">{link.name}</span>
+                    <motion.span 
+                      className="absolute inset-0 rounded-full bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      layoutId="nav-hover"
+                    />
                   </Link>
                 </motion.div>
               ))}
+            </div>
+
+            {/* Right Actions - Desktop */}
+            <div className="hidden md:flex items-center gap-4">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.25, duration: 0.3 }}
-                className="pt-4 space-y-3 border-t border-slate-100 mt-4"
+                transition={{ delay: 0.4, duration: 0.5 }}
+              >
+                <Link
+                  href="/client"
+                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                >
+                  Login
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.5, duration: 0.5 }}
+              >
+                <Link
+                  href="#book"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/10"
+                >
+                  <span className="relative z-10">Book a Call</span>
+                  <ArrowUpRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                </Link>
+              </motion.div>
+            </div>
+
+            {/* Mobile Menu Button */}
+            <motion.button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="md:hidden p-2.5 text-gray-700 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
+              aria-label="Toggle menu"
+              whileTap={{ scale: 0.95 }}
+            >
+              <AnimatePresence mode="wait">
+                {mobileMenuOpen ? (
+                  <motion.div
+                    key="close"
+                    initial={{ rotate: -90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: 90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <X className="w-5 h-5" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="menu"
+                    initial={{ rotate: 90, opacity: 0 }}
+                    animate={{ rotate: 0, opacity: 1 }}
+                    exit={{ rotate: -90, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Menu className="w-5 h-5" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.button>
+          </div>
+        </nav>
+      </motion.header>
+
+      {/* Mobile Menu - Full Screen Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden"
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-[#FAFAF8]"
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            
+            {/* Menu Content */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="relative h-full pt-24 px-6 pb-8 flex flex-col"
+            >
+              <div className="flex-1 flex flex-col justify-center">
+                <nav className="space-y-2">
+                  {navLinks.map((link, index) => (
+                    <motion.div
+                      key={link.name}
+                      initial={{ opacity: 0, x: -30 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                    >
+                      <Link
+                        href={link.href}
+                        onClick={() => setMobileMenuOpen(false)}
+                        className="block py-4 text-4xl font-medium text-gray-900 hover:text-teal-600 transition-colors duration-300"
+                      >
+                        {link.name}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </nav>
+              </div>
+              
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.35, duration: 0.4 }}
+                className="space-y-4 pt-8 border-t border-gray-200"
               >
                 <Link
                   href="/client"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block py-3 text-base font-medium text-slate-600 hover:text-slate-900 transition-colors duration-200"
+                  className="block py-3 text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
                 >
                   Client Login
                 </Link>
                 <Link
                   href="#book"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center rounded-full bg-teal-600 px-6 py-3.5 text-base font-medium text-white hover:bg-teal-700 transition-all duration-200 w-full"
+                  className="flex items-center justify-center gap-2 rounded-full bg-gray-900 px-8 py-4 text-lg font-medium text-white hover:bg-gray-800 transition-all duration-300 w-full"
                 >
-                  Book Strategy Call
+                  Book a Strategy Call
+                  <ArrowUpRight className="w-5 h-5" />
                 </Link>
               </motion.div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </>
   )
 }

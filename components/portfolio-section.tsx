@@ -42,7 +42,7 @@ export function PortfolioSection() {
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section id="portfolio" className="py-16 md:py-24 bg-slate-50" ref={containerRef}>
+    <section id="portfolio" className="py-24 md:py-32 bg-gray-50/50" ref={containerRef}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div

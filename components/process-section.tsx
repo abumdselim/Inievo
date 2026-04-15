@@ -83,7 +83,7 @@ export function ProcessSection() {
   const [openStep, setOpenStep] = useState<number | null>(0)
 
   return (
-    <section id="process" className="py-16 md:py-24 bg-white" ref={containerRef}>
+    <section id="process" className="py-24 md:py-32 bg-white" ref={containerRef}>
       <div className="max-w-5xl mx-auto px-6">
         {/* Header */}
         <motion.div
@@ -95,10 +95,10 @@ export function ProcessSection() {
           <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-teal-600 uppercase bg-teal-50 rounded-full">
             Our Process
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 tracking-tight text-balance">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-5 tracking-tight">
             From First Call to Launch in Five Steps
           </h2>
-          <p className="text-lg text-slate-600 max-w-2xl mx-auto text-pretty">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             We don&apos;t guess. Every project follows a structured process — so you always know what&apos;s happening, what&apos;s next, and what it costs.
           </p>
         </motion.div>
