@@ -1,9 +1,9 @@
 "use client"
 
-import { useState, useEffect } from "react"
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion"
+import { AnimatePresence, motion, useMotionValueEvent, useScroll } from "framer-motion"
+import { ArrowUpRight, Menu, X } from "lucide-react"
 import Link from "next/link"
-import { Menu, X, ArrowUpRight } from "lucide-react"
+import { useEffect, useState } from "react"
 
 const navLinks = [
   { name: "Services", href: "#services" },
@@ -42,7 +42,7 @@ export function Navigation() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg"
+        className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-[#005b94] to-[#004a79] shadow-lg"
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 md:h-20 items-center justify-between">
@@ -73,11 +73,11 @@ export function Navigation() {
                 >
                   <Link
                     href={link.href}
-                    className="relative px-4 py-2 text-sm font-medium text-white hover:text-blue-100 transition-all duration-300 group"
+                    className="relative px-4 py-2 text-sm font-medium text-white hover:text-[#f59641] transition-all duration-300 group"
                   >
                     <span className="relative z-10">{link.name}</span>
                     <motion.span 
-                      className="absolute inset-0 rounded-full bg-blue-700 opacity-0 group-hover:opacity-40 transition-opacity duration-300"
+                      className="absolute inset-0 rounded-full bg-white opacity-0 group-hover:opacity-15 transition-opacity duration-300"
                       layoutId="nav-hover"
                     />
                   </Link>
@@ -94,7 +94,7 @@ export function Navigation() {
               >
                 <Link
                   href="/auth/login"
-                  className="px-4 py-2 text-sm font-medium text-white hover:text-blue-100 transition-colors duration-300"
+                  className="px-4 py-2 text-sm font-medium text-white hover:text-[#f59641] transition-colors duration-300"
                 >
                   Login
                 </Link>
@@ -106,7 +106,7 @@ export function Navigation() {
               >
                 <Link
                   href="/auth/signup"
-                  className="px-4 py-2 text-sm font-medium text-blue-900 border border-white rounded-lg hover:bg-white/10 transition-colors duration-300"
+                  className="px-4 py-2 text-sm font-medium text-white border border-white rounded-lg hover:bg-white hover:text-[#005b94] transition-colors duration-300"
                 >
                   Sign Up
                 </Link>
@@ -118,7 +118,7 @@ export function Navigation() {
               >
                 <Link
                   href="#book"
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-orange-500 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/20"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#f59641] px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#e48732] hover:shadow-lg hover:shadow-[#f59641]/25"
                 >
                   <span className="relative z-10">Book a Call</span>
                   <ArrowUpRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -129,7 +129,7 @@ export function Navigation() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 text-white hover:text-blue-100 transition-colors rounded-full hover:bg-blue-700"
+              className="md:hidden p-2.5 text-white hover:text-[#f59641] transition-colors rounded-full hover:bg-white/10"
               aria-label="Toggle menu"
               whileTap={{ scale: 0.95 }}
             >
@@ -200,7 +200,7 @@ export function Navigation() {
                       <Link
                         href={link.href}
                         onClick={() => setMobileMenuOpen(false)}
-                        className="block py-4 text-4xl font-medium text-gray-900 hover:text-teal-600 transition-colors duration-300"
+                        className="block py-4 text-4xl font-medium text-gray-900 hover:text-[#005b94] transition-colors duration-300"
                       >
                         {link.name}
                       </Link>
@@ -219,14 +219,14 @@ export function Navigation() {
                   <Link
                     href="/auth/login"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex-1 py-3 text-sm font-medium text-blue-900 border border-blue-900 rounded-lg hover:bg-blue-50 transition-colors duration-300 text-center"
+                    className="flex-1 py-3 text-sm font-medium text-[#005b94] border border-[#005b94] rounded-lg hover:bg-[#005b94]/5 transition-colors duration-300 text-center"
                   >
                     Login
                   </Link>
                   <Link
                     href="/auth/signup"
                     onClick={() => setMobileMenuOpen(false)}
-                    className="flex-1 py-3 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-300 text-center"
+                    className="flex-1 py-3 text-sm font-medium text-white bg-[#f59641] rounded-lg hover:bg-[#e48732] transition-colors duration-300 text-center"
                   >
                     Sign Up
                   </Link>
@@ -234,7 +234,7 @@ export function Navigation() {
                 <Link
                   href="#book"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-lg font-medium text-white hover:bg-orange-600 transition-all duration-300 w-full"
+                  className="flex items-center justify-center gap-2 rounded-full bg-[#f59641] px-8 py-4 text-lg font-medium text-white hover:bg-[#e48732] transition-all duration-300 w-full"
                 >
                   Book a Call
                   <ArrowUpRight className="w-5 h-5" />

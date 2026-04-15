@@ -24,9 +24,9 @@
   --signal-orange: #f97316;
   --signal-orange-light: #fb923c;
   
-  /* Primary - Teal (for dashboards) */
-  --primary: #0D9488;
-  --primary-light: #14B8A6;
+  /* Primary - Brand Blue */
+  --primary: #005b94;
+  --primary-light: #1b74aa;
   --primary-foreground: #FFFFFF;
   
   /* Secondary */
@@ -35,9 +35,9 @@
   --muted: #F1F5F9;
   --muted-foreground: #64748B;
   
-  /* CTAs use Signal Orange */
-  --accent: #F97316;
-  --accent-light: #FB923C;
+  /* Secondary - Brand Orange */
+  --accent: #f59641;
+  --accent-light: #f7a75f;
   --accent-foreground: #FFFFFF;
   
   --destructive: #EF4444;
@@ -45,7 +45,7 @@
   --border: #E2E8F0;
   --border-subtle: #F1F5F9;
   --input: #F1F5F9;
-  --ring: #0D9488;
+  --ring: #005b94;
   --radius: 0.75rem;
   --trend-green: #16A34A;
   --trend-green-bg: #DCFCE7;
@@ -136,13 +136,13 @@
   
   /* Text Gradient */
   .text-gradient {
-    background: linear-gradient(135deg, #0D9488 0%, #0F766E 50%, #F97316 100%);
+    background: linear-gradient(135deg, #005b94 0%, #1b74aa 50%, #f59641 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-gradient-primary {
-    background: linear-gradient(135deg, #0D9488 0%, #14B8A6 100%);
+    background: linear-gradient(135deg, #005b94 0%, #1b74aa 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -157,13 +157,13 @@
   
   /* Glow Effects */
   .glow-teal {
-    box-shadow: 0 0 40px -10px rgba(13, 148, 136, 0.3);
+    box-shadow: 0 0 40px -10px rgba(0, 91, 148, 0.3);
   }
   .glow-orange {
-    box-shadow: 0 0 40px -10px rgba(249, 115, 22, 0.3);
+    box-shadow: 0 0 40px -10px rgba(245, 150, 65, 0.3);
   }
   .glow-orange-brand {
-    box-shadow: 0 0 30px -8px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 0 30px -8px rgba(245, 150, 65, 0.4);
   }
   .glow-azure {
     box-shadow: 0 0 30px -8px rgba(30, 58, 138, 0.3);
@@ -213,7 +213,7 @@
 
   /* Teal Accent Glow - Light Mode */
   .glow-teal-light {
-    box-shadow: 0 0 30px -10px rgba(13, 148, 136, 0.2);
+    box-shadow: 0 0 30px -10px rgba(0, 91, 148, 0.2);
   }
 
   /* Smooth Page Transitions */
@@ -235,6 +235,24 @@
   /* Smooth Transitions */
   .transition-premium {
     transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .logo-marquee {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .logo-track {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: max-content;
+    animation: marquee-left var(--marquee-duration, 24s) linear infinite;
+    will-change: transform;
+  }
+
+  .logo-marquee:hover .logo-track {
+    animation-play-state: paused;
   }
 }
 
@@ -263,6 +281,11 @@
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
+}
+
+@keyframes marquee-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 /* Custom Scrollbar */

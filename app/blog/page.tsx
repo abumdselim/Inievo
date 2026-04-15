@@ -1,4 +1,3 @@
-import { Navigation } from "@/components/navigation"
 import { BlogHero } from "@/components/blog/blog-hero"
 import { CategoryFilter } from "@/components/blog/category-filter"
 import { FeaturedPost } from "@/components/blog/featured-post"
@@ -13,7 +12,6 @@ export const metadata = {
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-[#0A1628]">
-      <Navigation />
       <BlogHero />
       <CategoryFilter />
       <FeaturedPost />

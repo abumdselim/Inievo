@@ -1,7 +1,8 @@
 "use client"
 
-import ClientSidebar from "@/components/client/client-sidebar"
-import ClientTopbar from "@/components/client/client-topbar"
+import { ClientSidebar } from "@/components/client/client-sidebar"
+import { ClientTopbar } from "@/components/client/client-topbar"
+import { ClientMobileNav } from "@/components/client/client-mobile-nav"
 import { FolderKanban, Clock, CheckCircle, Circle } from "lucide-react"
 
 const projects = [
@@ -83,6 +84,7 @@ export default function ProjectsPage() {
           </div>
         </main>
       </div>
+      <ClientMobileNav />
     </div>
   )
 }

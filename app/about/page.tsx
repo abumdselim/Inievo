@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { CheckCircle } from "lucide-react"
-import { Navigation } from "@/components/navigation"
 
 export const metadata = {
   title: "About Us | Inievo",
@@ -23,7 +22,6 @@ export default function AboutPage() {
 
   return (
     <main className="min-h-screen bg-[#0A1628]">
-      <Navigation />
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
@@ -76,7 +74,7 @@ export default function AboutPage() {
                     transition={{ delay: 0.3 + index * 0.1 }}
                     className="flex gap-3"
                   >
-                    <CheckCircle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
+                    <CheckCircle className="w-6 h-6 text-orange-500 shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold text-white">{value.title}</h3>
                       <p className="text-gray-300 text-sm">{value.description}</p>
@@ -140,7 +138,7 @@ export default function AboutPage() {
                 transition={{ delay: 0.5 + index * 0.1 }}
                 className={`text-center ${member.name === "We're Hiring" ? "border-2 border-dashed border-blue-700 p-4 rounded-xl" : ""}`}
               >
-                <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-900 to-orange-500 mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
+                <div className="w-20 h-20 rounded-full bg-linear-to-br from-blue-900 to-orange-500 mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
                   {member.name.charAt(0)}
                 </div>
                 <h3 className="font-semibold text-white mb-1">{member.name}</h3>

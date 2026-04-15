@@ -1,9 +1,8 @@
-import { Navigation } from "@/components/navigation"
-import { ShopHero } from "@/components/shop/shop-hero"
-import { WhyBuy } from "@/components/shop/why-buy"
+import { FooterCTA } from "@/components/footer-cta"
 import { ProductsGrid } from "@/components/shop/products-grid"
 import { ShopFAQ } from "@/components/shop/shop-faq"
-import { FooterCTA } from "@/components/footer-cta"
+import { ShopHero } from "@/components/shop/shop-hero"
+import { WhyBuy } from "@/components/shop/why-buy"
 
 export const metadata = {
   title: "Digital Shop | Inievo",
@@ -13,7 +12,6 @@ export const metadata = {
 export default function ShopPage() {
   return (
     <main className="min-h-screen bg-[#0A1628]">
-      <Navigation />
       <ShopHero />
       <WhyBuy />
       <ProductsGrid />

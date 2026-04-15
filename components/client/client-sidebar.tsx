@@ -1,19 +1,22 @@
 "use client"
 
 import { motion } from "framer-motion"
-import Image from "next/image"
-import Link from "next/link"
 import {
-  LayoutDashboard,
-  FolderKanban,
   Archive,
   FileText,
+  FolderKanban,
   HeadphonesIcon,
+  LayoutDashboard,
   Settings,
 } from "lucide-react"
+import Image from "next/image"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+
+import { LogoutButton } from "@/components/client/logout-button"
 
 const sidebarLinks = [
-  { name: "Overview", href: "/client", icon: LayoutDashboard, active: true },
+  { name: "Overview", href: "/client", icon: LayoutDashboard },
   { name: "My Projects", href: "/client/projects", icon: FolderKanban },
   { name: "Asset Vault", href: "/client/assets", icon: Archive },
   { name: "Invoices", href: "/client/invoices", icon: FileText },
@@ -22,6 +25,8 @@ const sidebarLinks = [
 ]
 
 export function ClientSidebar() {
+  const pathname = usePathname()
+
   return (
     <motion.aside
       initial={{ opacity: 0, x: -30, filter: "blur(10px)" }}
@@ -50,6 +55,7 @@ export function ClientSidebar() {
       <nav className="flex-1 py-8 px-5 space-y-2">
         {sidebarLinks.map((link, index) => {
           const Icon = link.icon
+          const isActive = pathname === link.href || (link.href !== "/client" && pathname.startsWith(link.href))
           return (
             <motion.div
               key={link.name}
@@ -60,12 +66,12 @@ export function ClientSidebar() {
               <Link
                 href={link.href}
                 className={`flex items-center gap-4 px-4 py-3.5 rounded-lg text-sm font-medium transition-all duration-300 group ${
-                  link.active
-                    ? "bg-orange-500/20 text-orange-400 border-l-2 border-orange-500 -ml-[2px]"
+                  isActive
+                    ? "bg-orange-500/20 text-orange-400 border-l-2 border-orange-500 -ml-0.5"
                     : "text-blue-100 hover:text-white hover:bg-blue-800"
                 }`}
               >
-                <Icon className={`w-5 h-5 ${link.active ? "text-orange-400" : "text-blue-300 group-hover:text-blue-100"} transition-colors duration-300`} />
+                <Icon className={`w-5 h-5 ${isActive ? "text-orange-400" : "text-blue-300 group-hover:text-blue-100"} transition-colors duration-300`} />
                 {link.name}
               </Link>
             </motion.div>
@@ -80,17 +86,23 @@ export function ClientSidebar() {
         transition={{ delay: 0.8, duration: 0.5 }}
         className="p-5 border-t border-blue-800"
       >
-        <div className="flex items-center gap-4 px-4 py-4 bg-blue-800 rounded-lg border border-blue-700">
-          <div className="relative">
-            <div className="w-12 h-12 rounded-full bg-gradient-to-br from-orange-500 to-orange-400 flex items-center justify-center text-white text-lg font-semibold shadow-lg shadow-orange-500/20">
-              DN
+        <div className="space-y-3 rounded-lg border border-blue-700 bg-blue-800 px-4 py-4">
+          <div className="flex items-center gap-4">
+            <div className="relative">
+              <div className="w-12 h-12 rounded-full bg-linear-to-br from-orange-500 to-orange-400 flex items-center justify-center text-white text-lg font-semibold shadow-lg shadow-orange-500/20">
+                DN
+              </div>
+              <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-blue-900"></div>
             </div>
-            <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-blue-900"></div>
+            <div className="flex-1 min-w-0">
+              <p className="text-sm font-semibold text-white truncate">Dr. Nusrat</p>
+              <p className="text-xs text-blue-300 truncate">Cardiology</p>
+            </div>
           </div>
-          <div className="flex-1 min-w-0">
-            <p className="text-sm font-semibold text-white truncate">Dr. Nusrat</p>
-            <p className="text-xs text-blue-300 truncate">Cardiology</p>
-          </div>
+
+          <LogoutButton
+            className="flex items-center justify-center gap-2 rounded-lg border border-blue-700 bg-blue-900/70 px-4 py-3 text-sm font-medium text-blue-100 transition-colors hover:bg-blue-700 hover:text-white disabled:cursor-not-allowed disabled:opacity-60"
+          />
         </div>
       </motion.div>
     </motion.aside>

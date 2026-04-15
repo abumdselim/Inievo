@@ -3,6 +3,8 @@
 import { motion } from "framer-motion"
 import { Bell, Calendar } from "lucide-react"
 
+import { LogoutButton } from "@/components/client/logout-button"
+
 export function ClientTopbar() {
   return (
     <motion.header
@@ -36,7 +38,7 @@ export function ClientTopbar() {
         initial={{ opacity: 0, x: 10 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ delay: 0.5, duration: 0.4 }}
-        className="flex items-center gap-5"
+        className="flex items-center gap-3 sm:gap-5"
       >
         {/* Notification Bell */}
         <button className="relative p-3 rounded-lg bg-slate-100 hover:bg-slate-200 transition-all duration-300 group">
@@ -44,6 +46,11 @@ export function ClientTopbar() {
           {/* Teal Notification Dot */}
           <span className="absolute top-2.5 right-2.5 w-2.5 h-2.5 bg-teal-600 rounded-full animate-pulse shadow-lg shadow-teal-600/50"></span>
         </button>
+
+        <LogoutButton
+          className="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-3 text-sm font-medium text-slate-700 transition-colors hover:border-slate-300 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+          showLabel={false}
+        />
 
         {/* Book Check-in Call Button */}
         <button className="hidden sm:flex items-center gap-2.5 px-5 py-3 text-sm font-medium text-teal-600 border border-teal-600 hover:bg-teal-600 hover:text-white rounded-lg transition-all duration-300 shadow-lg shadow-teal-600/10 hover:shadow-teal-600/30">

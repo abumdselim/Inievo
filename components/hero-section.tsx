@@ -1,9 +1,9 @@
 "use client"
 
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion"
-import Link from "next/link"
+import { motion, useMotionValue, useScroll, useSpring, useTransform } from "framer-motion"
 import { ArrowRight, Play, Sparkles } from "lucide-react"
-import { useRef, useEffect, useState } from "react"
+import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
 
 // Animated gradient orb component
 function GradientOrb({ 

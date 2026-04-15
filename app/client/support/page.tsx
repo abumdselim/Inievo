@@ -1,10 +1,11 @@
 "use client"
 
+import { Clock, MessageSquare, Send } from "lucide-react"
 import { useState } from "react"
-import { Send, MessageSquare, Clock } from "lucide-react"
 
 import { ClientSidebar } from "@/components/client/client-sidebar"
 import { ClientTopbar } from "@/components/client/client-topbar"
+import { ClientMobileNav } from "@/components/client/client-mobile-nav"
 
 const tickets = [
   {
@@ -150,6 +151,7 @@ export default function ClientSupportPage() {
           </div>
         </main>
       </div>
+      <ClientMobileNav />
     </div>
   )
 }

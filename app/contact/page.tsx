@@ -1,7 +1,6 @@
-import { motion } from "framer-motion"
 import { ContactForm } from "@/components/contact-form"
 import { ContactInfoStrip } from "@/components/contact-info-strip"
-import { Navigation } from "@/components/navigation"
+import { motion } from "framer-motion"
 
 export const metadata = {
   title: "Contact Us | Inievo",
@@ -11,7 +10,6 @@ export const metadata = {
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-white">
-      <Navigation />
       {/* Header */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}

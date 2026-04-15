@@ -1,8 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ArrowRight, Lock, Mail, User } from "lucide-react"
 import Link from "next/link"
-import { Mail, Lock, User, ArrowRight } from "lucide-react"
 import { useState } from "react"
 
 interface AuthFormProps {
@@ -73,7 +73,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="John Doe"
-                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-900 focus:ring-1 focus:ring-blue-900 transition-colors"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-[#005b94] focus:ring-1 focus:ring-[#005b94] transition-colors"
                   required
                 />
               </div>
@@ -98,7 +98,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
                 value={formData.email}
                 onChange={handleChange}
                 placeholder="you@example.com"
-                className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-900 focus:ring-1 focus:ring-blue-900 transition-colors"
+                className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-[#005b94] focus:ring-1 focus:ring-[#005b94] transition-colors"
                 required
               />
             </div>
@@ -123,7 +123,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
                   value={formData.password}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-900 focus:ring-1 focus:ring-blue-900 transition-colors"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-[#005b94] focus:ring-1 focus:ring-[#005b94] transition-colors"
                   required
                 />
               </div>
@@ -149,7 +149,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
                   value={formData.confirmPassword}
                   onChange={handleChange}
                   placeholder="••••••••"
-                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-blue-900 focus:ring-1 focus:ring-blue-900 transition-colors"
+                  className="w-full pl-10 pr-4 py-3 border border-slate-200 rounded-lg focus:outline-none focus:border-[#005b94] focus:ring-1 focus:ring-[#005b94] transition-colors"
                   required
                 />
               </div>
@@ -166,7 +166,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
             >
               <Link
                 href="/auth/forgot"
-                className="text-sm text-blue-900 hover:text-blue-700 transition-colors"
+                className="text-sm text-[#005b94] hover:text-[#004a79] transition-colors"
               >
                 Forgot password?
               </Link>
@@ -179,7 +179,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: type === "signup" ? 0.5 : (type === "forgot" ? 0.2 : 0.4) }}
             type="submit"
-            className="w-full bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group mt-6"
+            className="w-full bg-[#f59641] hover:bg-[#e48732] text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group mt-6"
           >
             {type === "login" && "Sign In"}
             {type === "signup" && "Create Account"}
@@ -200,7 +200,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
               Don't have an account?{" "}
               <Link
                 href="/auth/signup"
-                className="text-blue-900 font-medium hover:text-blue-700 transition-colors"
+                className="text-[#005b94] font-medium hover:text-[#004a79] transition-colors"
               >
                 Sign up
               </Link>
@@ -211,7 +211,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
               Already have an account?{" "}
               <Link
                 href="/auth/login"
-                className="text-blue-900 font-medium hover:text-blue-700 transition-colors"
+                className="text-[#005b94] font-medium hover:text-[#004a79] transition-colors"
               >
                 Sign in
               </Link>
@@ -222,7 +222,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
               Remember your password?{" "}
               <Link
                 href="/auth/login"
-                className="text-blue-900 font-medium hover:text-blue-700 transition-colors"
+                className="text-[#005b94] font-medium hover:text-[#004a79] transition-colors"
               >
                 Back to login
               </Link>
@@ -239,7 +239,7 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
         className="mt-6 text-center text-sm text-slate-500"
       >
         By continuing, you agree to our{" "}
-        <Link href="/privacy" className="text-blue-900 hover:text-blue-700 transition-colors">
+        <Link href="/privacy" className="text-[#005b94] hover:text-[#004a79] transition-colors">
           Privacy Policy
         </Link>
       </motion.div>

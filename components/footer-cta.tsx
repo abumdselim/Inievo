@@ -1,20 +1,20 @@
 "use client"
 
 import { motion, useInView } from "framer-motion"
-import { useRef } from "react"
+import { ArrowRight, Facebook, Instagram, Linkedin, Mail, MapPin, Phone } from "lucide-react"
 import Link from "next/link"
-import { ArrowRight, Linkedin, Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react"
+import { useRef } from "react"
 
 export function FooterCTA() {
   const containerRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(containerRef, { once: true, margin: "-100px" })
 
   return (
-    <section className="relative bg-gradient-to-r from-blue-900 to-blue-800 overflow-hidden" ref={containerRef}>
+    <section className="relative bg-gradient-to-r from-[#005b94] to-[#004a79] overflow-hidden" ref={containerRef}>
       {/* Subtle gradient background */}
       <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-teal-500/5 rounded-full blur-[120px]" />
-        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-orange-500/5 rounded-full blur-[100px]" />
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-[#005b94]/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-[#f59641]/20 rounded-full blur-[100px]" />
       </div>
       
       {/* Grid pattern */}
@@ -36,7 +36,7 @@ export function FooterCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="inline-block px-4 py-1.5 mb-8 text-xs font-semibold tracking-wider text-blue-200 uppercase bg-blue-700/40 rounded-full border border-blue-400/30"
+            className="inline-block px-4 py-1.5 mb-8 text-xs font-semibold tracking-wider text-[#f9c18f] uppercase bg-white/10 rounded-full border border-[#f59641]/40"
           >
             Let&apos;s Build Together
           </motion.span>
@@ -48,7 +48,7 @@ export function FooterCTA() {
             className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight leading-tight"
           >
             Ready to Build Something{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-teal-400 via-teal-300 to-orange-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8bc0e0] via-[#d6eaf6] to-[#f9c18f]">
               Remarkable?
             </span>
           </motion.h2>
@@ -57,7 +57,7 @@ export function FooterCTA() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-            className="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
+            className="text-white/75 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed"
           >
             We take on only 3 new projects per month to maintain the quality standard 
             our clients expect. If you&apos;re serious about your digital presence, let&apos;s talk.
@@ -71,14 +71,14 @@ export function FooterCTA() {
           >
             <Link
               href="#book"
-              className="group px-8 py-4 bg-orange-500 text-white font-medium rounded-full transition-all duration-300 hover:bg-orange-600 hover:shadow-2xl hover:shadow-orange-500/30 hover:scale-[1.02] flex items-center gap-2 w-full sm:w-auto justify-center"
+              className="group px-8 py-4 bg-[#f59641] text-white font-medium rounded-full transition-all duration-300 hover:bg-[#e48732] hover:shadow-2xl hover:shadow-[#f59641]/30 hover:scale-[1.02] flex items-center gap-2 w-full sm:w-auto justify-center"
             >
               Book a Free Strategy Call
               <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
             </Link>
             <Link
               href="#services"
-              className="px-8 py-4 border border-blue-300 hover:border-blue-100 text-blue-100 hover:text-white font-medium rounded-full transition-all duration-300 w-full sm:w-auto text-center"
+              className="px-8 py-4 border border-white/40 hover:border-white text-white/90 hover:text-white font-medium rounded-full transition-all duration-300 w-full sm:w-auto text-center"
             >
               View Pricing
             </Link>
@@ -87,7 +87,7 @@ export function FooterCTA() {
       </div>
 
       {/* Footer */}
-      <footer className="relative border-t border-gray-800/50">
+      <footer className="relative border-t border-white/15">
         <div className="max-w-7xl mx-auto px-6 py-16">
           <div className="grid md:grid-cols-12 gap-12">
             {/* Brand */}
@@ -99,7 +99,7 @@ export function FooterCTA() {
                   className="h-10 w-auto object-contain brightness-0 invert"
                 />
               </div>
-              <p className="text-blue-100 text-sm leading-relaxed max-w-sm mb-8">
+              <p className="text-white/80 text-sm leading-relaxed max-w-sm mb-8">
                 Premium digital systems for Bangladesh&apos;s ambitious brands. Architecturally sound websites, cohesive brand identities, and growth engines that scale.
               </p>
               
@@ -113,7 +113,7 @@ export function FooterCTA() {
                   <Link
                     key={i}
                     href={social.href}
-                    className="w-10 h-10 rounded-full bg-blue-700/50 hover:bg-blue-600 flex items-center justify-center text-blue-100 hover:text-white transition-all duration-300"
+                    className="w-10 h-10 rounded-full bg-white/10 hover:bg-[#f59641] flex items-center justify-center text-white/85 hover:text-white transition-all duration-300"
                   >
                     <social.icon className="w-4 h-4" />
                   </Link>
@@ -135,7 +135,7 @@ export function FooterCTA() {
                   { name: "Contact", href: "/contact" },
                 ].map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-blue-100 hover:text-white transition-colors duration-200">
+                    <Link href={link.href} className="text-white/80 hover:text-[#f59641] transition-colors duration-200">
                       {link.name}
                     </Link>
                   </li>
@@ -154,7 +154,7 @@ export function FooterCTA() {
                   { name: "Terms", href: "/terms" },
                 ].map((link) => (
                   <li key={link.name}>
-                    <Link href={link.href} className="text-blue-100 hover:text-white transition-colors duration-200">
+                    <Link href={link.href} className="text-white/80 hover:text-[#f59641] transition-colors duration-200">
                       {link.name}
                     </Link>
                   </li>
@@ -167,24 +167,24 @@ export function FooterCTA() {
               <h4 className="text-white font-semibold mb-5 text-sm uppercase tracking-wider">Contact</h4>
               <ul className="space-y-4 text-sm">
                 <li>
-                  <a href="mailto:hello@inievo.com" className="text-blue-100 hover:text-white transition-colors duration-200 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-700/50 flex items-center justify-center">
+                  <a href="mailto:hello@inievo.com" className="text-white/80 hover:text-[#f59641] transition-colors duration-200 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                       <Mail className="w-3.5 h-3.5" />
                     </div>
                     hello@inievo.com
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+8809678791213" className="text-blue-100 hover:text-white transition-colors duration-200 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-700/50 flex items-center justify-center">
+                  <a href="tel:+8809678791213" className="text-white/80 hover:text-[#f59641] transition-colors duration-200 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
                     +880 9678-791213
                   </a>
                 </li>
                 <li>
-                  <a href="https://wa.me/8801410177888" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-200 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-700/50 flex items-center justify-center">
+                  <a href="https://wa.me/8801410177888" target="_blank" rel="noopener noreferrer" className="text-white/80 hover:text-[#f59641] transition-colors duration-200 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                       <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
                         <path d="M12.031 6.172c-3.173 0-5.469 1.144-5.469 2.562 0 1.417 2.296 2.561 5.469 2.561 3.173 0 5.469-1.144 5.469-2.561 0-1.418-2.296-2.562-5.469-2.562zm0 5.125c-3.173 0-5.469 1.144-5.469 2.562 0 1.417 2.296 2.561 5.469 2.561 3.173 0 5.469-1.144 5.469-2.561 0-1.418-2.296-2.562-5.469-2.562zm0 5.125c-3.173 0-5.469 1.144-5.469 2.562 0 1.417 2.296 2.561 5.469 2.561 3.173 0 5.469-1.144 5.469-2.561 0-1.418-2.296-2.562-5.469-2.562z" />
                       </svg>
@@ -193,8 +193,8 @@ export function FooterCTA() {
                   </a>
                 </li>
                 <li>
-                  <span className="text-blue-100 flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-full bg-blue-700/50 flex items-center justify-center">
+                  <span className="text-white/80 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center">
                       <MapPin className="w-3.5 h-3.5" />
                     </div>
                     Dhaka, Bangladesh
@@ -205,11 +205,11 @@ export function FooterCTA() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-16 pt-8 border-t border-blue-700/50 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-blue-100 text-sm">
+          <div className="mt-16 pt-8 border-t border-white/15 flex flex-col md:flex-row items-center justify-between gap-4">
+            <p className="text-white/80 text-sm">
               &copy; {new Date().getFullYear()} Inievo. All rights reserved.
             </p>
-            <p className="text-blue-200 text-xs">
+            <p className="text-white/65 text-xs">
               Crafted with precision in Bangladesh
             </p>
           </div>

@@ -1,8 +1,8 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { ArrowRight, Briefcase, Mail, MessageSquare, User } from "lucide-react"
 import { useState } from "react"
-import { User, Mail, Briefcase, MessageSquare, ArrowRight } from "lucide-react"
 
 export function ContactForm() {
   const [formData, setFormData] = useState({

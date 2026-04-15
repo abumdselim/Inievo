@@ -1,8 +1,9 @@
 "use client"
 
-import { useState } from "react"
 import { Bell, Lock, User } from "lucide-react"
+import { useState } from "react"
 
+import { ClientMobileNav } from "@/components/client/client-mobile-nav"
 import { ClientSidebar } from "@/components/client/client-sidebar"
 import { ClientTopbar } from "@/components/client/client-topbar"
 
@@ -222,20 +223,7 @@ export default function ClientSettingsPage() {
         </main>
       </div>
 
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around border-t border-slate-200 bg-white">
-        <a href="/client" className="flex flex-col items-center gap-1 px-3 py-4 text-slate-500 transition-colors hover:text-blue-900">
-          <span className="text-xs font-medium">Overview</span>
-        </a>
-        <a href="/client/projects" className="flex flex-col items-center gap-1 px-3 py-4 text-slate-500 transition-colors hover:text-blue-900">
-          <span className="text-xs font-medium">Projects</span>
-        </a>
-        <a href="/client/support" className="flex flex-col items-center gap-1 px-3 py-4 text-slate-500 transition-colors hover:text-blue-900">
-          <span className="text-xs font-medium">Support</span>
-        </a>
-        <a href="/client/settings" className="flex flex-col items-center gap-1 border-b-2 border-orange-500 px-3 py-4 text-orange-500">
-          <span className="text-xs font-medium">Settings</span>
-        </a>
-      </div>
+      <ClientMobileNav />
     </div>
   )
 }

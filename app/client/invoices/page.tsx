@@ -2,7 +2,8 @@
 
 import { ClientSidebar } from "@/components/client/client-sidebar"
 import { ClientTopbar } from "@/components/client/client-topbar"
-import { FileText, Download } from "lucide-react"
+import { ClientMobileNav } from "@/components/client/client-mobile-nav"
+import { Download, FileText } from "lucide-react"
 
 const invoices = [
   {
@@ -63,7 +64,7 @@ export default function ClientInvoicesPage() {
 
           <section className="rounded-2xl border border-slate-200 bg-white shadow-sm">
             <div className="overflow-x-auto">
-              <table className="min-w-[760px] w-full text-left">
+              <table className="min-w-190 w-full text-left">
                 <thead className="border-b border-slate-200 bg-slate-50">
                   <tr>
                     <th className="px-5 py-3 text-xs font-semibold uppercase tracking-wide text-slate-600">Invoice #</th>
@@ -116,6 +117,7 @@ export default function ClientInvoicesPage() {
           </section>
         </main>
       </div>
+      <ClientMobileNav />
     </div>
   )
 }
