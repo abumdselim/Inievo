@@ -1,61 +1,74 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Check } from "lucide-react"
+import { Stethoscope, Building2, ShoppingCart, Brain } from "lucide-react"
+import Link from "next/link"
 
-const pricingTiers = [
+const serviceTiers = [
   {
-    name: "Foundation",
-    tagline: "PROFESSIONAL DIGITAL PRESENCE",
-    price: "BDT 1,80,000",
-    target: "For: Professionals, clinics, local businesses entering digital for the first time.",
-    deliverables: [
-      "Brand identity system",
-      "5–8 page Next.js website",
-      "SEO-ready copywriting",
-      "WhatsApp + Google Analytics integration",
-      "1-hour handover session",
-    ],
-    retainer: "Retainer: From BDT 15,000/mo",
-    cta: "Learn More →",
-    ctaStyle: "ghost",
-    highlighted: false,
+    name: "Essential",
+    subtitle: "Professional",
+    headline: "Essential / Professional",
+    price: "BDT 10,000",
+    accentColor: "#64748B", // Blue-Gray
+    accentGlow: "rgba(100, 116, 139, 0.3)",
+    target: "Doctors, Engineers, Teachers, or individuals needing a credible personal brand/portfolio.",
+    techStack: ["Next.js", "Tailwind", "Vercel"],
+    cta: "View Plan Details →",
+    ctaLink: "/services/essential",
+    icon: Stethoscope,
   },
   {
-    name: "Elevate",
-    tagline: "GROWTH-READY DIGITAL SYSTEM",
-    price: "BDT 4,00,000",
-    target: "For: Scaling e-commerce brands, growing local businesses.",
-    deliverables: [
-      "Full brand strategy workshop",
-      "10–20 page site with advanced CMS/E-commerce",
-      "bKash/SSLCommerz integration",
-      "Custom Figma design system",
-      "Tech SEO + 5 articles",
-    ],
-    retainer: "Retainer: From BDT 50,000/mo",
-    cta: "Learn More",
-    ctaStyle: "solid",
-    highlighted: true,
+    name: "Growth",
+    subtitle: "Standard",
+    headline: "Growth / Standard",
+    price: "BDT 30,000",
+    accentColor: "#6366F1", // Indigo
+    accentGlow: "rgba(99, 102, 241, 0.3)",
+    target: "Small organizations, local businesses, or information-focused websites.",
+    deliverables: ["SEO-ready structure", "Contact funnels", "Social media integration"],
+    techStack: ["Next.js", "Tailwind", "Vercel"],
+    cta: "View Plan Details →",
+    ctaLink: "/services/growth",
+    icon: Building2,
   },
   {
-    name: "Dominate",
-    tagline: "COMPLETE BUSINESS ARCHITECTURE",
-    price: "BDT 8,00,000",
-    target: "For: Established brands, multi-location businesses.",
-    deliverables: [
-      "Full brand architecture",
-      "Custom web app with admin dashboard",
-      "3D product renders + brand video",
-      "Full-funnel marketing (SEO/PPC)",
-      "Custom business tools integrated",
-    ],
-    retainer: "Retainer: From BDT 1,00,000/mo",
-    cta: "Request a Proposal →",
-    ctaStyle: "ghost",
-    highlighted: false,
+    name: "Advanced",
+    subtitle: "E-Commerce",
+    headline: "Advanced / E-Commerce",
+    price: "BDT 50,000",
+    accentColor: "#0D9488", // Inievo Teal
+    accentGlow: "rgba(13, 148, 136, 0.3)",
+    target: "Facebook shops moving to web, local retail brands, and shop management systems.",
+    deliverables: ["Inventory system", "bKash/Nagad integration", "Order tracking dashboard"],
+    techStack: ["Next.js", "Tailwind", "Vercel"],
+    cta: "View Plan Details →",
+    ctaLink: "/services/advanced",
+    icon: ShoppingCart,
+  },
+  {
+    name: "Premium",
+    subtitle: "Architecture",
+    headline: "Premium / Architecture",
+    price: "BDT 1,00,000",
+    accentColor: "#F97316", // Signal Orange
+    accentGlow: "rgba(249, 115, 22, 0.3)",
+    target: "High-end management systems, Custom ERPs, and large-scale digital business logic.",
+    deliverables: ["Custom DB Architecture", "Full Admin/Client ecosystem", "Multi-role access", "Scalable backend"],
+    techStack: ["Next.js", "Tailwind", "Vercel"],
+    cta: "Request Consultation →",
+    ctaLink: "/contact",
+    icon: Brain,
   },
 ]
+
+function TechBadge({ name }: { name: string }) {
+  return (
+    <span className="inline-flex items-center px-2.5 py-1 rounded-md bg-white/5 border border-white/10 text-[11px] font-medium text-gray-400">
+      {name}
+    </span>
+  )
+}
 
 export function PricingSection() {
   return (
@@ -67,111 +80,163 @@ export function PricingSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-[36px] font-semibold text-white mb-4 text-balance">
-            Three Paths to Digital Excellence
+          <h2 className="text-4xl md:text-[42px] font-semibold text-white mb-4 text-balance">
+            Service Tracks & Pricing
           </h2>
           <p className="text-lg text-gray-400 max-w-2xl mx-auto text-pretty">
-            Every business is different. Your digital system should be too. Choose the track that matches where you are — and where you&apos;re heading.
+            From professional portfolios to enterprise architecture — find the perfect starting point for your digital journey.
           </p>
         </motion.div>
 
-        {/* Pricing Cards */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
-          {pricingTiers.map((tier, index) => (
-            <motion.div
-              key={tier.name}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-              whileHover={{ scale: 1.02, y: -4 }}
-              className={`
-                relative rounded-2xl p-8 transition-shadow duration-300
-                ${tier.highlighted 
-                  ? "bg-[#0F2035] border-2 border-[#0D9488] lg:scale-105 shadow-[0_0_40px_rgba(13,148,136,0.15)]" 
-                  : "bg-[#0F2035] border border-[#1E3A5F]"
-                }
-                hover:shadow-[0_8px_30px_rgba(13,148,136,0.12)]
-              `}
-            >
-              {/* Most Popular Badge */}
-              {tier.highlighted && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                  <span className="bg-[#0D9488] text-white text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                    Most Popular
-                  </span>
-                </div>
-              )}
-
-              {/* Tagline */}
-              <p className="text-xs text-gray-400 uppercase tracking-wider mb-4">
-                {tier.tagline}
-              </p>
-
-              {/* Tier Name */}
-              <h3 className="text-2xl font-semibold text-white mb-2">
-                {tier.name}
-              </h3>
-
-              {/* Price */}
-              <div className="mb-4">
-                <span className="text-sm text-gray-400">Starting From</span>
-                <p className="text-3xl font-bold text-white">{tier.price}</p>
-              </div>
-
-              {/* Target Audience */}
-              <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-                {tier.target}
-              </p>
-
-              {/* Deliverables */}
-              <ul className="space-y-3 mb-6">
-                {tier.deliverables.map((item, i) => (
-                  <li key={i} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-[#0D9488] flex-shrink-0 mt-0.5" />
-                    <span className="text-sm text-gray-300">{item}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* Retainer Note */}
-              <p className="text-xs text-gray-500 mb-6">
-                {tier.retainer}
-              </p>
-
-              {/* CTA Button */}
-              <button
-                className={`
-                  w-full py-3 px-6 rounded-full font-medium text-sm transition-all duration-300
-                  ${tier.ctaStyle === "solid"
-                    ? "bg-[#0D9488] text-white hover:bg-[#0D9488]/90 hover:shadow-lg hover:shadow-[#0D9488]/25"
-                    : "border border-gray-600 text-gray-300 hover:border-gray-400 hover:text-white"
-                  }
-                `}
+        {/* Service Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+          {serviceTiers.map((tier, index) => {
+            const IconComponent = tier.icon
+            return (
+              <motion.div
+                key={tier.name}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ 
+                  scale: 1.02, 
+                  y: -6,
+                }}
+                className="group relative rounded-2xl p-6 bg-[#0F2035] border border-[#1E3A5F] transition-all duration-300 flex flex-col"
+                style={{
+                  // @ts-expect-error CSS custom property for hover glow
+                  '--accent-color': tier.accentColor,
+                  '--accent-glow': tier.accentGlow,
+                }}
               >
-                {tier.cta}
-              </button>
-            </motion.div>
-          ))}
+                {/* Hover Glow Effect */}
+                <div 
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{
+                    boxShadow: `0 0 40px ${tier.accentGlow}, inset 0 0 20px ${tier.accentGlow}`,
+                  }}
+                />
+                
+                {/* Accent Border on Hover */}
+                <div 
+                  className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none border-2"
+                  style={{ borderColor: tier.accentColor }}
+                />
+
+                {/* 3D Icon */}
+                <motion.div 
+                  className="relative mb-6"
+                  whileHover={{ y: -4 }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 300, 
+                    damping: 20,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    duration: 2
+                  }}
+                >
+                  <div 
+                    className="w-16 h-16 rounded-2xl flex items-center justify-center relative overflow-hidden"
+                    style={{
+                      background: `linear-gradient(135deg, ${tier.accentColor}20, ${tier.accentColor}40)`,
+                      boxShadow: `0 8px 32px ${tier.accentGlow}, inset 0 1px 0 rgba(255,255,255,0.1)`,
+                    }}
+                  >
+                    {/* 3D Depth Layer */}
+                    <div 
+                      className="absolute inset-0 rounded-2xl"
+                      style={{
+                        background: `linear-gradient(180deg, transparent 60%, ${tier.accentColor}30)`,
+                      }}
+                    />
+                    <IconComponent 
+                      className="w-8 h-8 relative z-10 transition-transform duration-300 group-hover:scale-110" 
+                      style={{ color: tier.accentColor }}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  {/* Floating Shadow */}
+                  <div 
+                    className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-12 h-3 rounded-full blur-md opacity-50 group-hover:opacity-70 transition-opacity"
+                    style={{ background: tier.accentColor }}
+                  />
+                </motion.div>
+
+                {/* Headline */}
+                <h3 className="text-xl font-semibold text-white mb-2">
+                  {tier.headline}
+                </h3>
+
+                {/* Price */}
+                <div className="mb-4">
+                  <span className="text-xs text-gray-500 uppercase tracking-wider">Starting From</span>
+                  <p className="text-2xl font-bold text-white">{tier.price}</p>
+                </div>
+
+                {/* Target Audience */}
+                <p className="text-sm text-gray-400 mb-5 leading-relaxed flex-grow">
+                  <span className="text-gray-500 font-medium">For: </span>
+                  {tier.target}
+                </p>
+
+                {/* Deliverables (if any) */}
+                {tier.deliverables && (
+                  <ul className="space-y-2 mb-5">
+                    {tier.deliverables.map((item, i) => (
+                      <li key={i} className="flex items-center gap-2 text-sm text-gray-300">
+                        <span 
+                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{ background: tier.accentColor }}
+                        />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+
+                {/* Tech Stack */}
+                <div className="flex flex-wrap gap-2 mb-6 mt-auto pt-4 border-t border-white/5">
+                  {tier.techStack.map((tech) => (
+                    <TechBadge key={tech} name={tech} />
+                  ))}
+                </div>
+
+                {/* CTA Button */}
+                <Link
+                  href={tier.ctaLink}
+                  className="w-full py-3 px-6 rounded-full font-medium text-sm text-center transition-all duration-300 border"
+                  style={{ 
+                    borderColor: tier.accentColor,
+                    color: tier.accentColor,
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = `${tier.accentColor}15`
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'transparent'
+                  }}
+                >
+                  {tier.cta}
+                </Link>
+              </motion.div>
+            )
+          })}
         </div>
 
-        {/* Anxiety Reducer */}
-        <motion.div
+        {/* Customization Note */}
+        <motion.p
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.6, delay: 0.5 }}
-          className="text-center mt-16"
+          className="text-center text-gray-500 mt-12 text-sm"
         >
-          <p className="text-gray-400 mb-6 max-w-xl mx-auto">
-            Not sure which track fits your business? Book a free 15-minute discovery call. No pitch — we listen first, then recommend.
-          </p>
-          <button className="border border-[#0D9488] text-[#0D9488] px-8 py-3 rounded-full font-medium text-sm hover:bg-[#0D9488]/10 transition-all duration-300">
-            Book a Free Discovery Call
-          </button>
-        </motion.div>
+          Every plan is 100% customizable to your business needs.
+        </motion.p>
       </div>
     </section>
   )
