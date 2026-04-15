@@ -5,7 +5,7 @@ import { PricingSection } from "@/components/pricing-section"
 import { ProcessSection } from "@/components/process-section"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { TrustCenter } from "@/components/trust-center"
-
+import { BlogPreview } from "@/components/blog-preview"
 import { FooterCTA } from "@/components/footer-cta"
 
 export default function Home() {
@@ -18,6 +18,7 @@ export default function Home() {
       <ProcessSection />
       <PortfolioSection />
       <TrustCenter />
+      <BlogPreview />
       <FooterCTA />
     </main>
   )
