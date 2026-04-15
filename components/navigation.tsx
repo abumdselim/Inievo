@@ -55,7 +55,7 @@ export function Navigation() {
                 className="relative"
               >
                 <img
-                  src="https://res.cloudinary.com/dwdsys1u9/image/upload/f_auto,q_auto/IMG_6017_onhhf9"
+                  src="https://res.cloudinary.com/det1qnlrh/image/upload/v1776244648/vo_x8e6ph.svg"
                   alt="Inievo"
                   className="h-9 w-auto md:h-10 object-contain"
                 />
