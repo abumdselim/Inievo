@@ -3,6 +3,7 @@
 import { motion } from "framer-motion"
 import { ArrowRight, Lock, Mail, User } from "lucide-react"
 import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { useState } from "react"
 
 interface AuthFormProps {
@@ -11,15 +12,58 @@ interface AuthFormProps {
 }
 
 export function AuthForm({ type, onSubmit }: AuthFormProps) {
+  const router = useRouter()
   const [formData, setFormData] = useState({
     email: "",
     password: "",
     name: "",
     confirmPassword: "",
   })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
+
+    if (isSubmitting) {
+      return
+    }
+
+    setErrorMessage(null)
+
+    if (type !== "login") {
+      onSubmit?.(formData)
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
+      })
+
+      if (!response.ok) {
+        const payload = (await response.json().catch(() => null)) as { error?: string } | null
+        setErrorMessage(payload?.error ?? "Unable to sign in. Please try again.")
+        return
+      }
+
+      router.replace("/client")
+      router.refresh()
+    } catch {
+      setErrorMessage("Unable to sign in. Please check your connection and try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+
     onSubmit?.(formData)
   }
 
@@ -179,13 +223,20 @@ export function AuthForm({ type, onSubmit }: AuthFormProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: type === "signup" ? 0.5 : (type === "forgot" ? 0.2 : 0.4) }}
             type="submit"
+            disabled={isSubmitting}
             className="w-full bg-[#f59641] hover:bg-[#e48732] text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 group mt-6"
           >
-            {type === "login" && "Sign In"}
+            {type === "login" && (isSubmitting ? "Signing In..." : "Sign In")}
             {type === "signup" && "Create Account"}
             {type === "forgot" && "Send Reset Link"}
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </motion.button>
+
+          {errorMessage && (
+            <p className="text-sm font-medium text-red-600" role="alert">
+              {errorMessage}
+            </p>
+          )}
         </form>
 
         {/* Footer Links */}
