@@ -117,7 +117,7 @@ export function Navigation() {
                 transition={{ delay: 0.55, duration: 0.5 }}
               >
                 <Link
-                  href="#book"
+                  href="/contact#contact-form"
                   className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-[#f59641] px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-[#e48732] hover:shadow-lg hover:shadow-[#f59641]/25"
                 >
                   <span className="relative z-10">Book a Call</span>
@@ -232,7 +232,7 @@ export function Navigation() {
                   </Link>
                 </div>
                 <Link
-                  href="#book"
+                  href="/contact#contact-form"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 rounded-full bg-[#f59641] px-8 py-4 text-lg font-medium text-white hover:bg-[#e48732] transition-all duration-300 w-full"
                 >

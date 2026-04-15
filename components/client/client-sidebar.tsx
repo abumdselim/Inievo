@@ -14,6 +14,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 import { LogoutButton } from "@/components/client/logout-button"
+import { useClientUser } from "@/hooks/use-client-user"
 
 const sidebarLinks = [
   { name: "Overview", href: "/client", icon: LayoutDashboard },
@@ -26,6 +27,15 @@ const sidebarLinks = [
 
 export function ClientSidebar() {
   const pathname = usePathname()
+  const { user } = useClientUser()
+  const displayName = user?.name || "Client"
+  const roleLabel = user?.role || "Portal Access"
+  const initials = displayName
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() || "")
+    .join("")
 
   return (
     <motion.aside
@@ -90,13 +100,13 @@ export function ClientSidebar() {
           <div className="flex items-center gap-4">
             <div className="relative">
               <div className="w-12 h-12 rounded-full bg-linear-to-br from-orange-500 to-orange-400 flex items-center justify-center text-white text-lg font-semibold shadow-lg shadow-orange-500/20">
-                DN
+                {initials || "CL"}
               </div>
               <div className="absolute -bottom-0.5 -right-0.5 w-4 h-4 bg-green-500 rounded-full border-2 border-blue-900"></div>
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-semibold text-white truncate">Dr. Nusrat</p>
-              <p className="text-xs text-blue-300 truncate">Cardiology</p>
+              <p className="text-sm font-semibold text-white truncate">{displayName}</p>
+              <p className="text-xs text-blue-300 truncate">{roleLabel}</p>
             </div>
           </div>
 

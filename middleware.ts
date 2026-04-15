@@ -1,13 +1,14 @@
 import { NextResponse, type NextRequest } from "next/server"
 
-import { AUTH_COOKIE_NAME } from "@/lib/auth"
+import { AUTH_COOKIE_NAME, verifySessionToken } from "@/lib/auth"
 
 const CLIENT_PATH_PREFIX = "/client"
 const LOGIN_PATH = "/auth/login"
 
-export function middleware(request: NextRequest) {
+export async function middleware(request: NextRequest) {
   const token = request.cookies.get(AUTH_COOKIE_NAME)?.value
-  const isAuthenticated = Boolean(token)
+  const user = await verifySessionToken(token)
+  const isAuthenticated = Boolean(user)
   const { pathname } = request.nextUrl
 
   if (pathname.startsWith(CLIENT_PATH_PREFIX) && !isAuthenticated) {

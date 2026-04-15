@@ -70,7 +70,7 @@ export function FooterCTA() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <Link
-              href="#book"
+              href="/contact#contact-form"
               className="group px-8 py-4 bg-[#f59641] text-white font-medium rounded-full transition-all duration-300 hover:bg-[#e48732] hover:shadow-2xl hover:shadow-[#f59641]/30 hover:scale-[1.02] flex items-center gap-2 w-full sm:w-auto justify-center"
             >
               Book a Free Strategy Call

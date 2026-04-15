@@ -255,7 +255,7 @@ export function HeroSection() {
           className="mt-10 md:mt-12 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <Link
-            href="#book"
+            href="/contact#contact-form"
             className="group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-full bg-gray-900 px-8 py-4 text-base font-medium text-white transition-all duration-500 hover:shadow-2xl hover:shadow-gray-900/20 w-full sm:w-auto"
           >
             <span className="relative z-10 flex items-center gap-2">

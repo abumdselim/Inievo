@@ -4,8 +4,12 @@ import { motion } from "framer-motion"
 import { Bell, Calendar } from "lucide-react"
 
 import { LogoutButton } from "@/components/client/logout-button"
+import { useClientUser } from "@/hooks/use-client-user"
 
 export function ClientTopbar() {
+  const { user } = useClientUser()
+  const displayName = user?.name || "Client"
+
   return (
     <motion.header
       initial={{ opacity: 0, y: -15, filter: "blur(10px)" }}
@@ -21,7 +25,7 @@ export function ClientTopbar() {
           transition={{ delay: 0.4, duration: 0.4 }}
           className="text-2xl font-semibold text-slate-900"
         >
-          Welcome back, <span className="text-teal-600">Dr. Nusrat</span>
+          Welcome back, <span className="text-teal-600">{displayName}</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}

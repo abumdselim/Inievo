@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 
-import { AUTH_COOKIE_NAME, authCookieOptions } from "@/lib/auth";
+import {
+  AUTH_COOKIE_NAME,
+  authCookieOptions,
+  createSessionToken,
+  verifyClientCredentials,
+} from "@/lib/auth";
 
 export async function POST(request: Request) {
   let body: { email?: string; password?: string }
@@ -18,8 +23,16 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Email and password are required" }, { status: 400 })
   }
 
+  const user = verifyClientCredentials(email, password)
+
+  if (!user) {
+    return NextResponse.json({ error: "Invalid email or password" }, { status: 401 })
+  }
+
+  const token = await createSessionToken(user)
+
   const response = NextResponse.json({ success: true })
-  response.cookies.set(AUTH_COOKIE_NAME, "active", authCookieOptions)
+  response.cookies.set(AUTH_COOKIE_NAME, token, authCookieOptions)
 
   return response
 }
