@@ -9,7 +9,10 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Work", href: "#portfolio" },
   { name: "Process", href: "#process" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
   { name: "Shop", href: "/shop" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export function Navigation() {
@@ -90,7 +93,7 @@ export function Navigation() {
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
                 <Link
-                  href="/client"
+                  href="/auth/login"
                   className="px-4 py-2 text-sm font-medium text-white hover:text-blue-100 transition-colors duration-300"
                 >
                   Login
@@ -99,7 +102,19 @@ export function Navigation() {
               <motion.div
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                <Link
+                  href="/auth/signup"
+                  className="px-4 py-2 text-sm font-medium text-blue-900 border border-white rounded-lg hover:bg-white/10 transition-colors duration-300"
+                >
+                  Sign Up
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.55, duration: 0.5 }}
               >
                 <Link
                   href="#book"
@@ -198,21 +213,30 @@ export function Navigation() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.4 }}
-                className="space-y-4 pt-8 border-t border-gray-200"
+                className="space-y-3 pt-8 border-t border-gray-200"
               >
-                <Link
-                  href="/client"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-3 text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
-                >
-                  Client Login
-                </Link>
+                <div className="flex gap-3 pb-4">
+                  <Link
+                    href="/auth/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex-1 py-3 text-sm font-medium text-blue-900 border border-blue-900 rounded-lg hover:bg-blue-50 transition-colors duration-300 text-center"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/auth/signup"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex-1 py-3 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-300 text-center"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
                 <Link
                   href="#book"
                   onClick={() => setMobileMenuOpen(false)}
                   className="flex items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-lg font-medium text-white hover:bg-orange-600 transition-all duration-300 w-full"
                 >
-                  Book a Strategy Call
+                  Book a Call
                   <ArrowUpRight className="w-5 h-5" />
                 </Link>
               </motion.div>

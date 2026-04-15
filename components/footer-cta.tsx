@@ -129,8 +129,10 @@ export function FooterCTA() {
                   { name: "Services", href: "#services" },
                   { name: "Portfolio", href: "#portfolio" },
                   { name: "Process", href: "#process" },
+                  { name: "About", href: "/about" },
                   { name: "Shop", href: "/shop" },
                   { name: "Blog", href: "/blog" },
+                  { name: "Contact", href: "/contact" },
                 ].map((link) => (
                   <li key={link.name}>
                     <Link href={link.href} className="text-blue-100 hover:text-white transition-colors duration-200">
@@ -173,11 +175,21 @@ export function FooterCTA() {
                   </a>
                 </li>
                 <li>
-                  <a href="tel:+8801XXXXXXXXX" className="text-blue-100 hover:text-white transition-colors duration-200 flex items-center gap-3">
+                  <a href="tel:+8809678791213" className="text-blue-100 hover:text-white transition-colors duration-200 flex items-center gap-3">
                     <div className="w-8 h-8 rounded-full bg-blue-700/50 flex items-center justify-center">
                       <Phone className="w-3.5 h-3.5" />
                     </div>
-                    +880 1XXX-XXXXXX
+                    +880 9678-791213
+                  </a>
+                </li>
+                <li>
+                  <a href="https://wa.me/8801410177888" target="_blank" rel="noopener noreferrer" className="text-blue-100 hover:text-white transition-colors duration-200 flex items-center gap-3">
+                    <div className="w-8 h-8 rounded-full bg-blue-700/50 flex items-center justify-center">
+                      <svg className="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12.031 6.172c-3.173 0-5.469 1.144-5.469 2.562 0 1.417 2.296 2.561 5.469 2.561 3.173 0 5.469-1.144 5.469-2.561 0-1.418-2.296-2.562-5.469-2.562zm0 5.125c-3.173 0-5.469 1.144-5.469 2.562 0 1.417 2.296 2.561 5.469 2.561 3.173 0 5.469-1.144 5.469-2.561 0-1.418-2.296-2.562-5.469-2.562zm0 5.125c-3.173 0-5.469 1.144-5.469 2.562 0 1.417 2.296 2.561 5.469 2.561 3.173 0 5.469-1.144 5.469-2.561 0-1.418-2.296-2.562-5.469-2.562z" />
+                      </svg>
+                    </div>
+                    +880 1410-177888
                   </a>
                 </li>
                 <li>
