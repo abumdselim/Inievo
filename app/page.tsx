@@ -1,24 +1,24 @@
 import { Navigation } from "@/components/navigation"
 import { HeroSection } from "@/components/hero-section"
-import { SocialProof } from "@/components/social-proof"
-import { PricingSection } from "@/components/pricing-section"
+import { ProblemSection } from "@/components/problem-section"
 import { ProcessSection } from "@/components/process-section"
 import { PortfolioSection } from "@/components/portfolio-section"
 import { TrustCenter } from "@/components/trust-center"
-import { BlogPreview } from "@/components/blog-preview"
+import { PricingSection } from "@/components/pricing-section"
+import { FounderStory } from "@/components/founder-story"
 import { FooterCTA } from "@/components/footer-cta"
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#0A1628]">
+    <main className="min-h-screen bg-white">
       <Navigation />
       <HeroSection />
-      <SocialProof />
-      <PricingSection />
+      <ProblemSection />
       <ProcessSection />
       <PortfolioSection />
       <TrustCenter />
-      <BlogPreview />
+      <PricingSection />
+      <FounderStory />
       <FooterCTA />
     </main>
   )
