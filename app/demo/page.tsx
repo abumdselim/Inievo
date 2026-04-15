@@ -1,5 +1,6 @@
 import { DashboardSidebar } from "@/components/demo/dashboard-sidebar"
 import { DashboardTopbar } from "@/components/demo/dashboard-topbar"
+import { MobileNavDrawer } from "@/components/demo/mobile-nav-drawer"
 import { MetricCards } from "@/components/demo/metric-cards"
 import { TrafficChart } from "@/components/demo/traffic-chart"
 import { ProjectTable } from "@/components/demo/project-table"
@@ -13,17 +14,22 @@ export const metadata = {
 
 export default function DemoPage() {
   return (
-    <div className="min-h-screen bg-[#0A1628]">
-      {/* Sidebar */}
-      <DashboardSidebar />
+    <div className="min-h-screen bg-white">
+      {/* Mobile Navigation Drawer */}
+      <MobileNavDrawer />
+
+      {/* Sidebar - Hidden on mobile, visible on desktop */}
+      <div className="hidden md:block">
+        <DashboardSidebar />
+      </div>
 
       {/* Main Content */}
-      <div className="ml-64">
+      <div className="md:ml-64">
         {/* Top Bar */}
         <DashboardTopbar />
 
         {/* Dashboard Content */}
-        <main className="p-8">
+        <main className="p-4 sm:p-6 md:p-8">
           {/* Metric Cards */}
           <MetricCards />
 

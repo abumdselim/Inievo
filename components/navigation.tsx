@@ -9,7 +9,10 @@ const navLinks = [
   { name: "Services", href: "#services" },
   { name: "Work", href: "#portfolio" },
   { name: "Process", href: "#process" },
+  { name: "About", href: "/about" },
+  { name: "Blog", href: "/blog" },
   { name: "Shop", href: "/shop" },
+  { name: "Contact", href: "/contact" },
 ]
 
 export function Navigation() {
@@ -39,11 +42,7 @@ export function Navigation() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          hasScrolled 
-            ? "bg-[#FAFAF8]/90 backdrop-blur-xl shadow-[0_1px_0_rgba(0,0,0,0.03)]" 
-            : "bg-transparent"
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-900 to-blue-800 shadow-lg"
       >
         <nav className="mx-auto max-w-7xl px-6 lg:px-8">
           <div className="flex h-16 md:h-20 items-center justify-between">
@@ -74,11 +73,11 @@ export function Navigation() {
                 >
                   <Link
                     href={link.href}
-                    className="relative px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-all duration-300 group"
+                    className="relative px-4 py-2 text-sm font-medium text-white hover:text-blue-100 transition-all duration-300 group"
                   >
                     <span className="relative z-10">{link.name}</span>
                     <motion.span 
-                      className="absolute inset-0 rounded-full bg-gray-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                      className="absolute inset-0 rounded-full bg-blue-700 opacity-0 group-hover:opacity-40 transition-opacity duration-300"
                       layoutId="nav-hover"
                     />
                   </Link>
@@ -94,8 +93,8 @@ export function Navigation() {
                 transition={{ delay: 0.4, duration: 0.5 }}
               >
                 <Link
-                  href="/client"
-                  className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
+                  href="/auth/login"
+                  className="px-4 py-2 text-sm font-medium text-white hover:text-blue-100 transition-colors duration-300"
                 >
                   Login
                 </Link>
@@ -103,11 +102,23 @@ export function Navigation() {
               <motion.div
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
+                transition={{ delay: 0.45, duration: 0.5 }}
+              >
+                <Link
+                  href="/auth/signup"
+                  className="px-4 py-2 text-sm font-medium text-blue-900 border border-white rounded-lg hover:bg-white/10 transition-colors duration-300"
+                >
+                  Sign Up
+                </Link>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, x: 10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.55, duration: 0.5 }}
               >
                 <Link
                   href="#book"
-                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-gray-900 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-gray-800 hover:shadow-lg hover:shadow-gray-900/10"
+                  className="group relative inline-flex items-center gap-2 overflow-hidden rounded-full bg-orange-500 px-5 py-2.5 text-sm font-medium text-white transition-all duration-300 hover:bg-orange-600 hover:shadow-lg hover:shadow-orange-500/20"
                 >
                   <span className="relative z-10">Book a Call</span>
                   <ArrowUpRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -118,7 +129,7 @@ export function Navigation() {
             {/* Mobile Menu Button */}
             <motion.button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden p-2.5 text-gray-700 hover:text-gray-900 transition-colors rounded-full hover:bg-gray-100"
+              className="md:hidden p-2.5 text-white hover:text-blue-100 transition-colors rounded-full hover:bg-blue-700"
               aria-label="Toggle menu"
               whileTap={{ scale: 0.95 }}
             >
@@ -165,7 +176,7 @@ export function Navigation() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="absolute inset-0 bg-[#FAFAF8]"
+              className="absolute inset-0 bg-white"
               onClick={() => setMobileMenuOpen(false)}
             />
             
@@ -202,21 +213,30 @@ export function Navigation() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.35, duration: 0.4 }}
-                className="space-y-4 pt-8 border-t border-gray-200"
+                className="space-y-3 pt-8 border-t border-gray-200"
               >
-                <Link
-                  href="/client"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block py-3 text-lg font-medium text-gray-600 hover:text-gray-900 transition-colors duration-300"
-                >
-                  Client Login
-                </Link>
+                <div className="flex gap-3 pb-4">
+                  <Link
+                    href="/auth/login"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex-1 py-3 text-sm font-medium text-blue-900 border border-blue-900 rounded-lg hover:bg-blue-50 transition-colors duration-300 text-center"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    href="/auth/signup"
+                    onClick={() => setMobileMenuOpen(false)}
+                    className="flex-1 py-3 text-sm font-medium text-white bg-orange-500 rounded-lg hover:bg-orange-600 transition-colors duration-300 text-center"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
                 <Link
                   href="#book"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="flex items-center justify-center gap-2 rounded-full bg-gray-900 px-8 py-4 text-lg font-medium text-white hover:bg-gray-800 transition-all duration-300 w-full"
+                  className="flex items-center justify-center gap-2 rounded-full bg-orange-500 px-8 py-4 text-lg font-medium text-white hover:bg-orange-600 transition-all duration-300 w-full"
                 >
-                  Book a Strategy Call
+                  Book a Call
                   <ArrowUpRight className="w-5 h-5" />
                 </Link>
               </motion.div>

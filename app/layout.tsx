@@ -39,9 +39,10 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#FAFAF8',
+  themeColor: '#FFFFFF',
   width: 'device-width',
   initialScale: 1,
+  maximumScale: 1,
 }
 
 export default function RootLayout({
@@ -50,8 +51,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-[#FAFAF8]">
-      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased`}>
+    <html lang="en" className="bg-white">
+      <body className={`${inter.variable} ${playfair.variable} font-sans antialiased bg-white`}>
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

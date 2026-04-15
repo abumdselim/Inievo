@@ -33,11 +33,11 @@ export function RecentInvoices() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.7, duration: 0.5, ease: "easeOut" }}
-      className="bg-[#0F2035] border border-[#1E3A5F] rounded-xl p-6"
+      className="bg-white border border-slate-200 rounded-lg p-6"
     >
       <div className="mb-6">
-        <h3 className="text-lg font-semibold text-white">Recent Invoices</h3>
-        <p className="text-sm text-gray-400 mt-1">Latest billing activity</p>
+        <h3 className="text-lg font-semibold text-slate-900">Recent Invoices</h3>
+        <p className="text-sm text-slate-500 mt-1">Latest billing activity</p>
       </div>
 
       <div className="space-y-4">
@@ -47,18 +47,18 @@ export function RecentInvoices() {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.8 + index * 0.1, duration: 0.3 }}
-            whileHover={{ scale: 1.01, backgroundColor: "rgba(26, 41, 66, 0.5)" }}
-            className="flex items-center gap-4 p-4 rounded-lg border border-[#1E3A5F]/50 transition-all cursor-pointer"
+            whileHover={{ scale: 1.01, backgroundColor: "#F8FAFC" }}
+            className="flex items-center gap-4 p-4 rounded-lg border border-slate-200 transition-all cursor-pointer"
           >
-            <div className="p-2 bg-[#1A2942] rounded-lg">
-              <FileText className="w-4 h-4 text-[#0D9488]" />
+            <div className="p-2 bg-teal-50 rounded-lg">
+              <FileText className="w-4 h-4 text-teal-600" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="text-sm font-medium text-white">{invoice.id}</p>
-              <p className="text-xs text-gray-400 truncate">{invoice.client}</p>
+              <p className="text-sm font-medium text-slate-900">{invoice.id}</p>
+              <p className="text-xs text-slate-500 truncate">{invoice.client}</p>
             </div>
             <div className="text-right">
-              <p className="text-sm font-medium text-white">{invoice.amount}</p>
+              <p className="text-sm font-medium text-slate-900">{invoice.amount}</p>
               <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded border ${invoice.statusColor}`}>
                 {invoice.status}
               </span>
