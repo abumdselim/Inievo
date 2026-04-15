@@ -1,6 +1,6 @@
-import { NextResponse } from "next/server"
+import { NextResponse } from "next/server";
 
-import { AUTH_COOKIE_NAME, authCookieOptions } from "@/lib/auth"
+import { AUTH_COOKIE_NAME, authCookieOptions } from "@/lib/auth";
 
 export async function POST(request: Request) {
   let body: { email?: string; password?: string }
