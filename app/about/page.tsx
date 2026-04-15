@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { CheckCircle } from "lucide-react"
+import { Navigation } from "@/components/navigation"
 
 export const metadata = {
   title: "About Us | Inievo",
@@ -16,12 +17,13 @@ export default function AboutPage() {
 
   const team = [
     { name: "Abumdselim", role: "Creative Director & Founder", expertise: "Brand Strategy & UI/UX" },
-    { name: "Team Member", role: "Lead Developer", expertise: "Full-Stack Development" },
-    { name: "Team Member", role: "Content Strategist", expertise: "SEO & Copywriting" },
+    { name: "We're Hiring", role: "Join Our Team", expertise: "Open Position" },
+    { name: "We're Hiring", role: "Join Our Team", expertise: "Open Position" },
   ]
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-[#0A1628]">
+      <Navigation />
       {/* Hero Section */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
@@ -30,10 +32,10 @@ export default function AboutPage() {
         className="pt-32 pb-20 px-4 sm:px-6 lg:px-8"
       >
         <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6">
+          <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
             Innovation Evolved
           </h1>
-          <p className="text-xl text-slate-600 leading-relaxed">
+          <p className="text-xl text-gray-300 leading-relaxed">
             At Inievo, we believe that technology should be elegant, purposeful, and transformative. We're not just building websites—we're architecting the digital presence of tomorrow's leading brands.
           </p>
         </div>
@@ -49,11 +51,11 @@ export default function AboutPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
             >
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Our Vision</h2>
-              <p className="text-slate-600 leading-relaxed mb-6">
+              <h2 className="text-3xl font-bold text-white mb-6">Our Vision</h2>
+              <p className="text-gray-300 leading-relaxed mb-6">
                 We envision a world where every brand—from ambitious startups to established enterprises—has access to world-class digital systems that drive real results.
               </p>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 Inievo stands at the intersection of design, technology, and strategy. We create digital experiences that are not just beautiful, but strategically engineered to achieve measurable business outcomes.
               </p>
             </motion.div>
@@ -64,7 +66,7 @@ export default function AboutPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Core Values</h2>
+              <h2 className="text-3xl font-bold text-white mb-6">Core Values</h2>
               <div className="space-y-4">
                 {values.map((value, index) => (
                   <motion.div
@@ -76,8 +78,8 @@ export default function AboutPage() {
                   >
                     <CheckCircle className="w-6 h-6 text-orange-500 flex-shrink-0 mt-1" />
                     <div>
-                      <h3 className="font-semibold text-slate-900">{value.title}</h3>
-                      <p className="text-slate-600 text-sm">{value.description}</p>
+                      <h3 className="font-semibold text-white">{value.title}</h3>
+                      <p className="text-gray-300 text-sm">{value.description}</p>
                     </div>
                   </motion.div>
                 ))}
@@ -92,10 +94,10 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3 }}
-        className="bg-slate-50 px-4 sm:px-6 lg:px-8 py-20"
+        className="bg-blue-900/20 px-4 sm:px-6 lg:px-8 py-20"
       >
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">
             How We Work
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -115,8 +117,8 @@ export default function AboutPage() {
                 <div className="text-4xl font-bold text-orange-500 mb-3">
                   {item.step}
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-2">{item.title}</h3>
-                <p className="text-slate-600 text-sm">{item.desc}</p>
+                <h3 className="font-semibold text-white mb-2">{item.title}</h3>
+                <p className="text-gray-300 text-sm">{item.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -126,24 +128,27 @@ export default function AboutPage() {
       {/* Team Section */}
       <section className="px-4 sm:px-6 lg:px-8 py-20">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-slate-900 mb-12 text-center">
+          <h2 className="text-3xl font-bold text-white mb-12 text-center">
             Meet the Team
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, index) => (
               <motion.div
-                key={member.name}
+                key={member.name + index}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5 + index * 0.1 }}
-                className="text-center"
+                className={`text-center ${member.name === "We're Hiring" ? "border-2 border-dashed border-blue-700 p-4 rounded-xl" : ""}`}
               >
                 <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-900 to-orange-500 mx-auto mb-4 flex items-center justify-center text-white text-2xl font-bold">
                   {member.name.charAt(0)}
                 </div>
-                <h3 className="font-semibold text-slate-900 mb-1">{member.name}</h3>
+                <h3 className="font-semibold text-white mb-1">{member.name}</h3>
                 <p className="text-orange-600 font-medium text-sm mb-2">{member.role}</p>
-                <p className="text-slate-600 text-sm">{member.expertise}</p>
+                <p className="text-gray-300 text-sm">{member.expertise}</p>
+                {member.name === "We're Hiring" && (
+                  <a href="/contact" className="mt-3 inline-block text-xs text-orange-400 hover:text-orange-300 underline">Apply Now →</a>
+                )}
               </motion.div>
             ))}
           </div>
@@ -155,11 +160,11 @@ export default function AboutPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.7, duration: 0.5 }}
-        className="bg-blue-900 text-white px-4 sm:px-6 lg:px-8 py-20"
+        className="bg-[#060E1A] text-white px-4 sm:px-6 lg:px-8 py-20"
       >
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Start?</h2>
-          <p className="text-blue-100 mb-8">
+          <p className="text-gray-300 mb-8">
             Let's create something extraordinary together. Schedule a consultation to discuss your vision.
           </p>
           <a
