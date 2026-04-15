@@ -42,16 +42,16 @@ export function TrafficChart() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: 0.5, ease: "easeOut" }}
-      className="bg-[#0F2035] border border-[#1E3A5F] rounded-xl p-6 lg:col-span-2"
+      className="bg-white border border-slate-200 rounded-lg p-6 lg:col-span-2"
     >
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h3 className="text-lg font-semibold text-white">Traffic Overview</h3>
-          <p className="text-sm text-gray-400 mt-1">Last 30 days visitor traffic</p>
+          <h3 className="text-lg font-semibold text-slate-900">Traffic Overview</h3>
+          <p className="text-sm text-slate-500 mt-1">Last 30 days visitor traffic</p>
         </div>
-        <div className="flex items-center gap-2 px-3 py-1.5 bg-emerald-500/10 rounded-full">
-          <div className="w-2 h-2 rounded-full bg-emerald-400" />
-          <span className="text-sm font-medium text-emerald-400">+287% growth</span>
+        <div className="flex items-center gap-2 px-3 py-1.5 bg-green-50 rounded-full">
+          <div className="w-2 h-2 rounded-full bg-green-600" />
+          <span className="text-sm font-medium text-green-600">+287% growth</span>
         </div>
       </div>
 
@@ -60,7 +60,7 @@ export function TrafficChart() {
           <AreaChart data={trafficData} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
             <defs>
               <linearGradient id="tealGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#0D9488" stopOpacity={0.4} />
+                <stop offset="0%" stopColor="#0D9488" stopOpacity={0.3} />
                 <stop offset="100%" stopColor="#0D9488" stopOpacity={0} />
               </linearGradient>
             </defs>
@@ -68,23 +68,23 @@ export function TrafficChart() {
               dataKey="day" 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#6B7280', fontSize: 12 }}
+              tick={{ fill: '#64748B', fontSize: 12 }}
               tickFormatter={(value) => value % 5 === 0 ? value : ''}
             />
             <YAxis 
               axisLine={false} 
               tickLine={false} 
-              tick={{ fill: '#6B7280', fontSize: 12 }}
+              tick={{ fill: '#64748B', fontSize: 12 }}
               width={40}
             />
             <Tooltip
               contentStyle={{
-                backgroundColor: '#1A2942',
-                border: '1px solid #1E3A5F',
+                backgroundColor: '#FFFFFF',
+                border: '1px solid #E2E8F0',
                 borderRadius: '8px',
-                color: '#fff',
+                color: '#0F172A',
               }}
-              labelStyle={{ color: '#9CA3AF' }}
+              labelStyle={{ color: '#64748B' }}
             />
             <Area
               type="monotone"

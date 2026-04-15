@@ -4,34 +4,37 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Premium Calm Design System - Inspired by Linear, Vercel, Stripe */
-  --background: #F9FAFB;
-  --background-warm: #F5F5F0;
-  --background-cream: #FAFAF8;
-  --foreground: #111827;
-  --foreground-muted: #6B7280;
-  --foreground-subtle: #9CA3AF;
+  /* Premium Professional Light Mode - 2026 Enterprise Standards */
+  --background: #FFFFFF;
+  --background-sidebar: #F8FAFC;
+  --background-secondary: #F1F5F9;
+  --background-cream: #FFFFFF;
+  --foreground: #0F172A;
+  --foreground-muted: #64748B;
+  --foreground-subtle: #94A3B8;
   --card: #FFFFFF;
-  --card-foreground: #111827;
+  --card-foreground: #0F172A;
   --popover: #FFFFFF;
-  --popover-foreground: #111827;
+  --popover-foreground: #0F172A;
   --primary: #0D9488;
   --primary-light: #14B8A6;
   --primary-foreground: #FFFFFF;
-  --secondary: #F3F4F6;
-  --secondary-foreground: #111827;
-  --muted: #F3F4F6;
-  --muted-foreground: #6B7280;
+  --secondary: #F1F5F9;
+  --secondary-foreground: #0F172A;
+  --muted: #F1F5F9;
+  --muted-foreground: #64748B;
   --accent: #F97316;
   --accent-light: #FB923C;
   --accent-foreground: #FFFFFF;
   --destructive: #EF4444;
   --destructive-foreground: #FFFFFF;
-  --border: #E5E7EB;
-  --border-subtle: #F3F4F6;
-  --input: #F3F4F6;
+  --border: #E2E8F0;
+  --border-subtle: #F1F5F9;
+  --input: #F1F5F9;
   --ring: #0D9488;
   --radius: 0.75rem;
+  --trend-green: #16A34A;
+  --trend-green-bg: #DCFCE7;
 }
 
 @theme inline {
@@ -158,7 +161,7 @@
     -webkit-backdrop-filter: blur(10px);
   }
   
-  /* Premium Shadows */
+  /* Premium Shadows - Light Mode */
   .shadow-premium {
     box-shadow: 
       0 1px 2px rgba(0, 0, 0, 0.02),
@@ -176,6 +179,37 @@
       0 4px 8px rgba(0, 0, 0, 0.02),
       0 16px 32px rgba(0, 0, 0, 0.04),
       0 32px 64px rgba(0, 0, 0, 0.08);
+  }
+
+  /* Light Mode Card Hover */
+  .card-hover {
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  
+  .card-hover:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    transform: translateY(-2px);
+  }
+
+  /* Teal Accent Glow - Light Mode */
+  .glow-teal-light {
+    box-shadow: 0 0 30px -10px rgba(13, 148, 136, 0.2);
+  }
+
+  /* Smooth Page Transitions */
+  .page-transition {
+    animation: pageSlideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @keyframes pageSlideIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   /* Smooth Transitions */

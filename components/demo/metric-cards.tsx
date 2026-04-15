@@ -49,30 +49,30 @@ function MetricCard({ title, value, prefix = "", suffix = "", trend, trendPositi
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay, duration: 0.5, ease: "easeOut" }}
-      whileHover={{ scale: 1.01, boxShadow: "0 0 30px rgba(13, 148, 136, 0.1)" }}
-      className="bg-[#0F2035] border border-[#1E3A5F] rounded-xl p-6 transition-all duration-300"
+      whileHover={{ scale: 1.01, boxShadow: "0 1px 3px rgba(0, 0, 0, 0.05)" }}
+      className="bg-white border border-slate-200 rounded-lg p-6 transition-all duration-300"
     >
       <div className="flex items-start justify-between">
         <div>
-          <p className="text-sm font-medium text-gray-400">{title}</p>
-          <p className="mt-2 text-3xl font-bold text-white tracking-tight">{formattedValue}</p>
+          <p className="text-sm font-medium text-slate-500">{title}</p>
+          <p className="mt-2 text-3xl font-bold text-slate-900 tracking-tight">{formattedValue}</p>
           {trend && (
-            <div className="mt-2 flex items-center gap-1">
+            <div className="mt-3 inline-flex items-center gap-2">
               {trendPositive ? (
                 <>
-                  <TrendingUp className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-medium text-emerald-400">{trend}</span>
+                  <TrendingUp className="w-4 h-4 text-green-600" />
+                  <span className="px-2 py-1 text-xs font-semibold text-green-600 bg-green-50 rounded-full">{trend}</span>
                 </>
               ) : (
                 <>
-                  <Check className="w-4 h-4 text-emerald-400" />
-                  <span className="text-sm font-medium text-emerald-400">{trend}</span>
+                  <Check className="w-4 h-4 text-green-600" />
+                  <span className="px-2 py-1 text-xs font-semibold text-green-600 bg-green-50 rounded-full">{trend}</span>
                 </>
               )}
             </div>
           )}
         </div>
-        <div className="p-3 bg-[#1A2942] rounded-lg text-[#0D9488]">
+        <div className="p-3 bg-teal-50 rounded-lg text-teal-600">
           {icon}
         </div>
       </div>
